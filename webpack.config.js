@@ -1,4 +1,5 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
     target: 'web',
@@ -29,6 +30,8 @@ module.exports = {
     plugins: [
 
     ],
+
+    postcss: [autoprefixer],
 
     resolve: {
         extensions: ['', '.jsx', '.js', '.webpack.js', '.css' ]
