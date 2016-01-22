@@ -21,7 +21,6 @@ const renderFullPage = () => {
       <head>
         <title>Redux Rethink</title>
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,200' rel='stylesheet' type='text/css'>
-        <link href='/style.css' rel='stylesheet' type='text/css'>
       </head>
       <body>
         <h3>Hello World</h3>
