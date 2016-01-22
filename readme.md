@@ -1,0 +1,1 @@
+A working application using Redux + React + RethinkDB + Express
