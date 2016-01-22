@@ -1,0 +1,32 @@
+const path = require('path');
+
+module.exports = {
+    target: 'web',
+
+    entry: [
+        './client'
+    ],
+
+    output: {
+        filename: './bundle.js',
+        path: path.join(__dirname, './dist'),
+        publicPath: '/'
+    },
+
+    module: {
+        loaders: [{
+            test: /\.js$/,
+            loaders: ['babel'],
+            exclude: /node_modules/,
+            include: __dirname
+        }]
+    },
+
+    plugins: [
+
+    ],
+
+    resolve: {
+        extensions: ['', '.jsx', '.js', '.webpack.js', '.css' ]
+    }
+}
