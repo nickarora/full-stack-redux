@@ -3,33 +3,18 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
 
+import { handleRender } from './server/app';
+
 const app = Express();
 const port = 3000;
+
+app.set('views', path.join(__dirname, 'server', 'views'));
+app.set('view engine', 'ejs')
 
 app.use(serveStatic(path.join(__dirname, 'dist')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const handleRender = (req, res) => {
-  res.send(renderFullPage());
-}
-
-const renderFullPage = () => {
-  return (`
-    <!doctype html>
-    <html>
-      <head>
-        <title>Redux Rethink</title>
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,200' rel='stylesheet' type='text/css'>
-      </head>
-      <body>
-        <div id="app"></div>
-        <script src="/bundle.js"></script>
-      </body>
-    </html>`
-  );
-}
-
-app.get('/', handleRender);
+app.get('*', handleRender);
 
 app.listen(port);

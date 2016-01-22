@@ -5,13 +5,13 @@ module.exports = {
     target: 'web',
 
     entry: [
-        './client'
+        './src/client'
     ],
 
     output: {
         filename: './bundle.js',
         path: path.join(__dirname, './dist'),
-        publicPath: '/'
+        publicPath: '/static/'
     },
 
     module: {
