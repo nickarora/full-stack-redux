@@ -14,7 +14,7 @@ import App from '../src/containers/App';
 import reducers from '../src/reducers';
 
 const initialState = {
-  todos: []
+  todos: ['take out trash', 'buy milk']
 };
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
