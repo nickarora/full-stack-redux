@@ -1,32 +1,47 @@
-/**
- * This is where I'll implement redux router (eventually)
- * and provide initial state to the store
- */
-
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import { createStore, applyMiddleware } from 'redux';
+import { Route, match, RouterContext } from 'react-router';
+import { syncHistory } from 'redux-simple-router';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-
-import App from '../src/containers/App';
+import createHistory from 'history/lib/createMemoryHistory';
+import thunk from 'redux-thunk';
 
 import reducers from '../src/reducers';
-
-const initialState = {
-  todos: ['take out trash', 'buy milk']
-};
-
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-const store = createStoreWithMiddleware(reducers, initialState);
+import routes from './routes';
 
 export function handleRender(req, res) {
 
-  const html = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
 
-  res.render('index', { html: html, initialState: JSON.stringify(store.getState())});
+    const initialState = { todos: ['take out trash', 'buy milk'] };
+
+    const history = createHistory();
+    const simpleRouter = syncHistory(history);
+    const createStoreWithMiddleware = applyMiddleware(thunk, simpleRouter)(createStore);
+    const store = createStoreWithMiddleware(reducers, initialState);
+
+    // Eventually will help us when we install redux devtools
+    simpleRouter.listenForReplays(store);
+
+    if (error) {
+      res.status(500).send(error.message)
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+    } else if (renderProps) {
+      const html = ReactDOMServer.renderToString(
+        <div>
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        </div>
+      );
+      res.render('index', { html: html, initialState: JSON.stringify(store.getState())});
+    } else {
+      res.status(404).render('error');
+    }
+
+  });
+
 }
