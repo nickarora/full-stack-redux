@@ -38,7 +38,7 @@ if (domEl) {
     <div>
       <Provider store={store}>
         <Router history={browserHistory}>
-          <Route path="/" component={App}></Route>
+          {routes}
         </Router>
       </Provider>
     </div>,
