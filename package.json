@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.webpack.js & node server.babel.js",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "./node_modules/karma/bin/karma start"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -29,8 +30,18 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.4.3",
+    "chai": "^3.4.1",
     "css-loader": "^0.23.1",
+    "karma": "^0.13.19",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.1",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "karma-sinon": "^1.0.4",
+    "karma-spec-reporter": "0.0.23",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.4",
     "node-sass": "^3.4.2",
+    "phantomjs": "^1.9.19",
     "postcss-loader": "^0.8.0",
     "react-hot-loader": "^1.3.0",
     "redux-devtools": "^3.0.1",
@@ -38,6 +49,7 @@
     "redux-devtools-log-monitor": "^1.0.2",
     "sass-loader": "^3.1.2",
     "serve-static": "^1.10.2",
+    "sinon": "^1.17.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
