@@ -1,5 +1,6 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 module.exports = {
     target: 'web',
@@ -28,7 +29,7 @@ module.exports = {
     },
 
     plugins: [
-
+        new webpack.HotModuleReplacementPlugin()
     ],
 
     postcss: [autoprefixer],

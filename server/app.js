@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 
 import { match, RouterContext } from 'react-router';
 import { syncHistory } from 'redux-simple-router';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/lib/createMemoryHistory';
 import thunk from 'redux-thunk';
@@ -17,8 +17,9 @@ export function handleRender(req, res) {
 
   const history = createHistory();
   const simpleRouter = syncHistory(history);
-  const createStoreWithMiddleware = applyMiddleware(thunk, simpleRouter)(createStore);
-  const store = createStoreWithMiddleware(reducers, initialState);
+  const finalCreateStore = applyMiddleware(thunk, simpleRouter)(createStore);
+
+  const store = finalCreateStore(reducers, initialState);
 
   simpleRouter.listenForReplays(store);
 
@@ -31,11 +32,9 @@ export function handleRender(req, res) {
     } else if (renderProps) {
 
       const html = ReactDOMServer.renderToString(
-        <div>
-          <Provider store={store}>
-            <RouterContext {...renderProps} />
-          </Provider>
-        </div>
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
       );
 
       res.render('index', { html: html, initialState: JSON.stringify(store.getState())} );
