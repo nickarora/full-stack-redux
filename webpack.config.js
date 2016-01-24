@@ -6,19 +6,21 @@ module.exports = {
     target: 'web',
 
     entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
         './src/client'
     ],
 
     output: {
-        filename: './bundle.js',
         path: path.join(__dirname, './dist'),
-        publicPath: '/static/'
+        filename: './bundle.js',
+        publicPath: 'http://localhost:8080/'
     },
 
     module: {
         loaders: [{
             test: /\.js$/,
-            loaders: ['babel'],
+            loaders: ['react-hot', 'babel'],
             exclude: /node_modules/,
             include: __dirname
         }, {
@@ -33,6 +35,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }),
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
