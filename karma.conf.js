@@ -9,7 +9,7 @@ module.exports = function(config) {
     singleRun: true,
     colors: true,
     frameworks: [ 'mocha', 'sinon', 'chai' ],
-    reporters: ["spec"],
+    reporters: ["mocha"],
 
     // Babelify tests
     preprocessors: {
