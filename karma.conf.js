@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
 
 module.exports = function(config) {
@@ -21,6 +21,11 @@ module.exports = function(config) {
       module: {
         loaders: webpackConfig.module.loaders
       },
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('test')
+        })
+      ],
       node: {
         fs: 'empty'
       }

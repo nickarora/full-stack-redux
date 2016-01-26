@@ -1,0 +1,8 @@
+{
+  "mongo": {
+    "host": "localhost",
+    "dev": "reduxApp",
+    "prod": "reduxApp",
+    "test": "reduxApp-test"
+  }
+}

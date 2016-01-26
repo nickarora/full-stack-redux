@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
+import dbConnection from './db_connection';
 
-// Eventually replace with variable from a config file
-mongoose.connect('mongodb://localhost/reduxApp');
+mongoose.connect(dbConnection);
 
 const TodoSchema = mongoose.Schema({
   note: { type: String },
