@@ -4,5 +4,10 @@
     "dev": "reduxApp",
     "prod": "reduxApp",
     "test": "reduxApp-test"
+  },
+  "express": {
+    "host": "localhost",
+    "appPort": 3000,
+    "devServerPort": 8080
   }
 }

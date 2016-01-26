@@ -1,49 +1,51 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const expressConfig = require('./config/default.json').express;
 
 module.exports = {
-    target: 'web',
+  target: 'web',
 
-    entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './src/client'
-    ],
+  entry: [
+      'webpack-dev-server/client?http://' + expressConfig.host + ':' + expressConfig.devServerPort,
+      'webpack/hot/only-dev-server',
+      './src/client'
+  ],
 
-    output: {
-        path: path.join(__dirname, './dist'),
-        filename: './bundle.js',
-        publicPath: 'http://localhost:8080/'
-    },
+  output: {
+      path: path.join(__dirname, './dist'),
+      filename: './bundle.js',
+      //publicPath: 'http://localhost:8080/'
+      publicPath: 'http://' + expressConfig.host + ':' + expressConfig.devServerPort + "/"
+  },
 
-    module: {
-        loaders: [{
-            test: /\.js$/,
-            loaders: ['react-hot', 'babel'],
-            exclude: /node_modules/,
-            include: __dirname
-        }, {
-            test: /\.css?$/,
-            loaders: ['style', 'css', 'postcss', 'sass'],
-            include: __dirname
-        }, {
-            test: /\.json$/,
-            loader: 'json'
-        }]
-    },
+  module: {
+      loaders: [{
+          test: /\.js$/,
+          loaders: ['react-hot', 'babel'],
+          exclude: /node_modules/,
+          include: __dirname
+      }, {
+          test: /\.css?$/,
+          loaders: ['style', 'css', 'postcss', 'sass'],
+          include: __dirname
+      }, {
+          test: /\.json$/,
+          loader: 'json'
+      }]
+  },
 
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-        new webpack.NoErrorsPlugin()
-    ],
+  plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('development')
+      }),
+      new webpack.NoErrorsPlugin()
+  ],
 
-    postcss: [autoprefixer],
+  postcss: [autoprefixer],
 
-    resolve: {
-        extensions: ['', '.jsx', '.js', '.webpack.js', '.css' ]
-    }
+  resolve: {
+      extensions: ['', '.jsx', '.js', '.webpack.js', '.css' ]
+  }
 }

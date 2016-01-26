@@ -21,3 +21,6 @@ app.get('/api/todos', api.getTodos);
 app.get('*', handleRender);
 
 app.listen(port);
+
+export default app;
+

@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
+var expressConfig = require('./config/default.json').express;
 
-var appPort = 3000;
-var devServerPort = 8080;
+var appPort = expressConfig.appPort;
+var devServerPort = expressConfig.devServerPort;
+var host = expressConfig.host;
 
 new WebpackDevServer(webpack(config), {
   contentBase: 'dist/',
@@ -13,9 +15,9 @@ new WebpackDevServer(webpack(config), {
   noInfo: true,
   hot: true,
   proxy: {
-    '*': 'http://localhost:' + appPort
+    '*': 'http://' + host + ':' + appPort
   }
-}).listen(devServerPort, 'localhost', function(err) {
+}).listen(devServerPort, host, function(err) {
   if (err) console.log(err);
-  console.log('Listening at localhost:' + devServerPort);
+  console.log('Listening at ' + host + ':' + devServerPort);
 });
