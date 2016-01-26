@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // Babelify tests
     preprocessors: {
-      './test/*.test.js': [ 'webpack' ]
+      './test/client/*.test.js': [ 'webpack' ]
     },
 
     webpack: {
@@ -32,7 +32,7 @@ module.exports = function(config) {
     },
 
     files: [
-      './test/*.test.js'
+      './test/client/*.test.js'
     ],
 
     webpackServer: {

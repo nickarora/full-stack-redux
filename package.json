@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.webpack.js & node server.babel.js",
     "build": "webpack",
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/karma/bin/karma start",
+    "test-server": "./node_modules/.bin/mocha ./test/server/*.js --reporter spec --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
