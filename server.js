@@ -2,13 +2,14 @@ import path from 'path';
 import Express from 'express';
 import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
+import expressConfig from './config/default.json';
 
 import { handleRender } from './server/app';
 
 import * as api from './server/api/http';
 
 const app = Express();
-const port = 3000;
+const port = expressConfig.express.appPort;
 
 app.set('views', path.join(__dirname, 'server', 'views'));
 app.set('view engine', 'ejs')

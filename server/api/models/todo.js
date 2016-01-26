@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import dbConnection from './db_connection';
+import dbConnection from '../db_connection';
 
 mongoose.connect(dbConnection);
 

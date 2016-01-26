@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node server.webpack.js & node server.babel.js",
+    "start": "NODE_ENV=development node server.webpack.js & NODE_ENV=development node server.babel.js",
     "build": "webpack",
     "test": "./node_modules/karma/bin/karma start",
-    "test-server": "./node_modules/.bin/mocha ./test/server/*.js --reporter spec --compilers js:babel-register"
+    "test-server": "NODE_ENV=test ./node_modules/.bin/mocha ./test/server/*.js --reporter spec --compilers js:babel-register"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -14,6 +14,7 @@
     "ejs": "^2.3.4",
     "express": "~4.13.1",
     "history": "^2.0.0-rc2",
+    "kerberos": "0.0.18",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.7",
     "react": "^0.14.6",
@@ -34,7 +35,6 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.4.3",
     "chai": "^3.4.1",
-    "chai-http": "^1.0.0",
     "css-loader": "^0.23.1",
     "json-loader": "^0.5.4",
     "karma": "^0.13.19",
@@ -56,6 +56,7 @@
     "serve-static": "^1.10.2",
     "sinon": "^1.17.2",
     "style-loader": "^0.13.0",
+    "superagent": "^1.7.2",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
   }

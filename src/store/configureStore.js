@@ -3,7 +3,7 @@ import prodStore from './configureStore.prod';
 
 let store = devStore;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test') {
   store = prodStore;
 }
 

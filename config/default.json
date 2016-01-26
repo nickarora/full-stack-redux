@@ -2,7 +2,7 @@
   "mongo": {
     "host": "localhost",
     "dev": "reduxApp",
-    "prod": "reduxApp",
+    "prod": "reduxApp-prod",
     "test": "reduxApp-test"
   },
   "express": {
