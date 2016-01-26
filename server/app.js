@@ -11,36 +11,43 @@ import thunk from 'redux-thunk';
 import reducers from '../src/reducers';
 import routes from './routes';
 
+import * as todoService from './api/service/todo_service';
+
 export function handleRender(req, res) {
 
-  const initialState = { todos: ['take out trash', 'buy milk'] };
+  todoService.fetchTodos((err, todos) => {
+    if (err) throw err;
 
-  const history = createHistory();
-  const simpleRouter = syncHistory(history);
-  const finalCreateStore = applyMiddleware(thunk, simpleRouter)(createStore);
+    const initialState = { todos };
 
-  const store = finalCreateStore(reducers, initialState);
+    const history = createHistory();
+    const simpleRouter = syncHistory(history);
+    const finalCreateStore = applyMiddleware(thunk, simpleRouter)(createStore);
 
-  simpleRouter.listenForReplays(store);
+    const store = finalCreateStore(reducers, initialState);
 
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    simpleRouter.listenForReplays(store);
 
-    if (error) {
-      res.status(500).send(error.message)
-    } else if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
-    } else if (renderProps) {
+    match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
 
-      const html = ReactDOMServer.renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      );
+      if (error) {
+        res.status(500).send(error.message)
+      } else if (redirectLocation) {
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+      } else if (renderProps) {
 
-      res.render('index', { html: html, initialState: JSON.stringify(store.getState())} );
-    } else {
-      res.status(404).render('error');
-    }
+        const html = ReactDOMServer.renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        );
+
+        res.render('index', { html: html, initialState: JSON.stringify(store.getState())} );
+      } else {
+        res.status(404).render('error');
+      }
+    });
+
   });
 
 }

@@ -1,1 +1,1 @@
-A working application using Redux + React + RethinkDB + Express
+A working application using Redux + React + Mongo + Express
