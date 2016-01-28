@@ -11,3 +11,7 @@ export const addTodo = ( { note }, callback) => {
     created_at: Date.now()
   }).save(callback);
 }
+
+export const updateTodo = ( id, update, callback ) => {
+  Todo.findByIdAndUpdate(id, update, {new: true}, callback);
+}

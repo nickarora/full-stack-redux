@@ -26,3 +26,14 @@ export const addTodo = ({ body }, res) => {
     return res.json(todo);
   });
 }
+
+export const updateTodo = ({ params, body }, res) => {
+  todoService.updateTodo(params.id, body, (err, conf) => {
+    if (err) {
+      res.status(400);
+      return res.json({ error: err })
+    }
+
+    return res.json(conf);
+  });
+}

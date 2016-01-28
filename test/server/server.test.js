@@ -49,4 +49,17 @@ describe('Todos Service', () => {
       });
   });
 
+  it ('should update a todo on PUT api/todos', done => {
+    Todo.findOne({ note: 'Todo1' }, (err, todo) => {
+      const update = { completed: true, created_at: Date.now() };
+      request
+        .put(`${endpoint}/todos/${todo._id}`)
+        .send(update)
+        .end( (err, { body }) => {
+          expect(body.completed).to.be.true;
+          done();
+        });
+    });
+  });
+
 });

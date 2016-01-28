@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 
 app.get('/api/todos', api.getTodos);
 app.post('/api/todos', api.addTodo);
+app.put('/api/todos/:id', api.updateTodo);
 app.get('*', handleRender);
 
 app.listen(port);
