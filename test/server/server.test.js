@@ -49,6 +49,16 @@ describe('Todos Service', () => {
       });
   });
 
+  it ('should throw an error if there is bad form data', done => {
+    request
+      .post(`${endpoint}/todos`)
+      .send({ taco: 'taco'})
+      .end((err, { body }) => {
+        expect(err).to.exist;
+        done();
+      });
+  });
+
   it ('should update a todo on PUT api/todos/:id', done => {
     Todo.findOne({ note: 'Todo1' }, (err, todo) => {
       const update = { completed: true, created_at: Date.now() };
