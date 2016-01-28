@@ -13,14 +13,14 @@ describe('Todos Service', () => {
 
   Todo.collection.drop();
 
-  beforeEach((done) => {
+  beforeEach(done => {
     Todo.collection.insert(seedTodos, (err, docs) => {
       if (err) throw err;
       done();
     })
   });
 
-  afterEach((done) => {
+  afterEach(done => {
     Todo.collection.drop();
     done();
   });
@@ -33,6 +33,20 @@ describe('Todos Service', () => {
       res.body.forEach(todo => expect(todo.note).to.exist);
       done();
     });
+  });
+
+  it ('should add a todo on POST api/todos', done => {
+    request
+      .post(`${endpoint}/todos`)
+      .send({ note: 'New Todo'})
+      .end((err, { body }) => {
+        expect(err).to.be.null;
+        expect(body.note).to.exist;
+        Todo.findById(body._id, (err, found) => {
+          expect(found).to.exist;
+          done();
+        });
+      });
   });
 
 });

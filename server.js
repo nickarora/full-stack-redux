@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/api/todos', api.getTodos);
+app.post('/api/todos', api.addTodo);
 app.get('*', handleRender);
 
 app.listen(port);
