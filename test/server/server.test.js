@@ -49,7 +49,7 @@ describe('Todos Service', () => {
       });
   });
 
-  it ('should update a todo on PUT api/todos', done => {
+  it ('should update a todo on PUT api/todos/:id', done => {
     Todo.findOne({ note: 'Todo1' }, (err, todo) => {
       const update = { completed: true, created_at: Date.now() };
       request
@@ -58,6 +58,20 @@ describe('Todos Service', () => {
         .end( (err, { body }) => {
           expect(body.completed).to.be.true;
           done();
+        });
+    });
+  });
+
+  it ('should delete a todo on DEL api/todos/:id', done => {
+    Todo.findOne({ note: 'Todo1'} , (err, todo) => {
+      request.del(`${endpoint}/todos/${todo._id}`)
+        .end( (err, { body }) => {
+          expect(err).to.be.null;
+          expect(body.note).to.equal('Todo1');
+          Todo.find((err, todos) => {
+            expect(todos).to.have.length(3);
+            done();
+          })
         });
     });
   });

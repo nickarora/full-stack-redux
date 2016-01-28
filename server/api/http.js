@@ -37,3 +37,14 @@ export const updateTodo = ({ params, body }, res) => {
     return res.json(conf);
   });
 }
+
+export const deleteTodo = ({ params }, res) => {
+  todoService.deleteTodo(params.id, (err, conf) => {
+    if (err) {
+      res.status(400);
+      return res.json({ error: err })
+    }
+
+    return res.json(conf);
+  });
+}

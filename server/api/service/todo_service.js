@@ -15,3 +15,7 @@ export const addTodo = ( { note }, callback) => {
 export const updateTodo = ( id, update, callback ) => {
   Todo.findByIdAndUpdate(id, update, {new: true}, callback);
 }
+
+export const deleteTodo = (id, callback) => {
+  Todo.findByIdAndRemove(id, callback);
+}
