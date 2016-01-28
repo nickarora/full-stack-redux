@@ -13,7 +13,7 @@ const logger = createLogger({
 const simpleRouter = syncHistory(browserHistory);
 const finalCreateStore = applyMiddleware(thunk, simpleRouter, logger)(createStore);
 
-export default function configureStore(initialState) {
+export default (initialState) => {
   const store = finalCreateStore(reducers, initialState);
   return store;
 }

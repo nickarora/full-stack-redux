@@ -13,7 +13,7 @@ import routes from './routes';
 
 import * as todoService from './api/service/todo_service';
 
-export function handleRender(req, res) {
+export const handleRender = (req, res) => {
 
   todoService.fetchTodos((err, todos) => {
     if (err) throw err;

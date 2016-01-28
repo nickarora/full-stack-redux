@@ -18,7 +18,7 @@ const finalCreateStore = compose(
   DevTools.instrument()
 )(createStore);
 
-export default function configureStore(initialState) {
+export default (initialState) => {
   const store = finalCreateStore(reducers, initialState);
   if (module.hot) { module.hot.accept( '../reducers', () => store.replaceReducer(reducers) ); }
   simpleRouter.listenForReplays(store);

@@ -1,3 +1,3 @@
-export default function todos (state = null, action) {
+export default (state = null, action) => {
   return state;
 }

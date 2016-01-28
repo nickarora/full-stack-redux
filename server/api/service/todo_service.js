@@ -1,8 +1,13 @@
 import Todo from '../models/todo';
 
-export function fetchTodos(callback) {
-  Todo.find((err, todos) => {
-    if (err) { callback(err); }
-    else { callback(null, todos); }
-  });
+export const fetchTodos = (callback) => {
+  Todo.find(callback);
+}
+
+export const addTodo = ( { note }, callback) => {
+  new Todo({
+    note: note,
+    completed: false,
+    created_at: Date.now()
+  }).save(callback);
 }
