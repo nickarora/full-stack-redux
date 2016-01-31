@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import TodosList from '../components/TodosList';
+
 class App extends Component {
   render() {
     return (
       <div>
         <h3>TODOS</h3>
-        <p>Todos List Length: { this.props.todos.length }</p>
+        <TodosList todos={this.props.todos} />
       </div>
     );
   }
