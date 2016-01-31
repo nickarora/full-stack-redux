@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-export default (props) => {
-  const todo = props.todo;
+const Todo = (props) => {
   return (
-    <li className="todo">{todo.note}</li>
+    <li className="todo">
+      {props.note}
+    </li>
   )
 }
+
+Todo.propTypes = {
+  note: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired
+}
+
+export default Todo;
