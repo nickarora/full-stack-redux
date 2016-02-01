@@ -9,7 +9,7 @@ const TodosList = (props) => {
         <Todo key={todo._id}
               note={todo.note}
               completed={todo.completed}
-              onClick={() => props.onTodoClick(todo._id)} />
+              onClick={() => props.onTodoClick(todo)} />
       )}
     </ul>
   )

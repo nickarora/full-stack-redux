@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import TodosList from '../components/TodosList';
-import { completeTodo } from '../actions/actions';
+import { toggleTodo } from '../actions/actions';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
         <h3>TODOS</h3>
         <TodosList
           todos={this.props.todos}
-          onTodoClick = { id => this.props.completeTodo(id) }
+          onTodoClick = { todo => this.props.toggleTodo(todo) }
         />
       </div>
     );
@@ -24,7 +24,7 @@ const mapStateToProps = ({ todos }) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ completeTodo }, dispatch);
+  return bindActionCreators({ toggleTodo }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -7,7 +7,7 @@ import Todo from '../../server/api/models/todo';
 
 import server from '../../server.babel';
 
-const endpoint = `${express.host}:${express.appPort}/api`;
+const endpoint = `http://${express.host}:${express.appPort}/api`;
 
 describe('Todos Service', () => {
 
