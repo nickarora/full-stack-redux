@@ -13,7 +13,7 @@ describe('async actions', () => {
     nock.cleanAll()
   })
 
-  it('creates FETCH_TODOS_SUCCESS when fetching todos has been done', (done) => {
+  it('creates TODO_TOGGLE_SUCCESS after successfully toggling todo', (done) => {
 
     const todo = { _id: "200", note: "test todo", completed: false, created_at: "2016" }
 
@@ -33,8 +33,8 @@ describe('async actions', () => {
 
     const store = mockStore({ todos: [] }, expectedActions, done)
     store.dispatch(actions.toggleTodo(todo))
-    
   })
+
 })
 
 
