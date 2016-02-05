@@ -11,12 +11,10 @@ export const toggleTodo = (todo) => {
 
     const update = { completed: !todo.completed };
 
-    console.log(`${endpoint}/todos/${todo._id}`);
     request
       .put(`${endpoint}/todos/${todo._id}`)
       .send(update)
       .end( (err, res) => {
-        console.log(err);
         const body = res.body;
 
         if (err)

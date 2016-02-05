@@ -1,6 +1,5 @@
-import expect from 'expect'
+import { expect } from 'chai'
 import todoReducer from '../../src/reducers/todo'
-import todosReducer from '../../src/reducers/todos'
 
 import * as types from '../../src/constants/consts'
 
@@ -16,7 +15,7 @@ describe('todo reducer', () => {
   it('should return the initial state', () => {
     expect(
       todoReducer(state, {})
-    ).toEqual(
+    ).to.eql(
       state
     )
   });
@@ -27,7 +26,7 @@ describe('todo reducer', () => {
         type: types.REQUEST_TODO_TOGGLE,
         todo: state
       })
-    ).toEqual(
+    ).to.eql(
       {
         _id: 0,
         note: 'Use Redux',
@@ -43,7 +42,35 @@ describe('todo reducer', () => {
         type: types.REQUEST_TODO_TOGGLE,
         todo: { ...state, _id: state.id + 1 }
       })
-    ).toEqual(
+    ).to.eql(
+      state
+    )
+  });
+
+
+  it ('should handle TODO_TOGGLE_FAIL', () => {
+    expect(
+      todoReducer(state, {
+        type: types.TODO_TOGGLE_FAIL,
+        todo: state
+      })
+    ).to.eql(
+      {
+        _id: 0,
+        note: 'Use Redux',
+        completed: true,
+        created_at: "2016"
+      }
+    )
+  });
+
+  it ('should handle TODO_TOGGLE_SUCCESS', () => {
+    expect(
+      todoReducer(state, {
+        type: types.TODO_TOGGLE_SUCCESS,
+        todo: state
+      })
+    ).to.eql(
       state
     )
   });
