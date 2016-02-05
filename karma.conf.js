@@ -13,8 +13,11 @@ module.exports = function(config) {
     reporters: ["mocha"],
 
     // Babelify tests
+    files: [
+      'test/browser/*.test.js'
+    ],
     preprocessors: {
-      './test/client/*.test.js': [ 'webpack' ]
+      './test/browser/*.test.js': [ 'webpack' ] // Preprocess with webpack
     },
 
     webpack: {
@@ -30,10 +33,6 @@ module.exports = function(config) {
         fs: 'empty',
       }
     },
-
-    files: [
-      './test/client/*.test.js'
-    ],
 
     webpackServer: {
       noInfo: true // no webpack output
