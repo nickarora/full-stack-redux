@@ -9,7 +9,7 @@ export const toggleTodo = (todo) => {
 
     dispatch(requestToggleTodo(todo));
 
-    const update = { completed: !todo.completed, created_at: Date.now() };
+    const update = { completed: !todo.completed };
 
     console.log(`${endpoint}/todos/${todo._id}`);
     request
