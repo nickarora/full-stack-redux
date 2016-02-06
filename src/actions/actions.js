@@ -2,7 +2,7 @@ import request from 'superagent';
 import shortid from 'shortid';
 import endpoint from './endpoint';
 
-import * as types from '../constants/action_types'
+import * as types from '../constants/actionTypes'
 
 export const toggleTodo = (todo) => {
 

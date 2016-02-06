@@ -1,4 +1,4 @@
-import { REQUEST_TODO_TOGGLE, TODO_TOGGLE_SUCCESS, TODO_TOGGLE_FAIL } from '../constants/action_types';
+import { REQUEST_TODO_TOGGLE, TODO_TOGGLE_SUCCESS, TODO_TOGGLE_FAIL } from '../constants/actionTypes';
 
 export default (state, action) => {
   switch (action.type) {

@@ -2,7 +2,7 @@ import {
   REQUEST_TODO_TOGGLE,
   TODO_TOGGLE_SUCCESS,
   TODO_TOGGLE_FAIL,
-  REQUEST_ADD_TODO } from '../constants/action_types';
+  REQUEST_ADD_TODO } from '../constants/actionTypes';
 
 import todo from './todo';
 

@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../../src/actions/actions'
-import * as types from '../../src/constants/action_types'
+import * as types from '../../src/constants/actionTypes'
 import endpoint from '../../src/actions/endpoint'
 import nock from 'nock'
 import {expect} from 'chai'
