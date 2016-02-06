@@ -13,11 +13,9 @@ export const toggleTodo = (todo) => {
     request
       .put(`${endpoint}/todos/${todo._id}`)
       .send(update)
-      .end( (err, res) => {
-        const body = res.body;
-
+      .end( (err, { body }) => {
         if (err)
-          dispatch(todoToggleFail(body))
+          dispatch(todoToggleFail(todo))
         else
           dispatch(todoToggleSuccess(body))
       });
@@ -28,6 +26,16 @@ export const addTodo = (inputText) => {
   return function(dispatch) {
     const todo = { _id: shortid.generate(), note: inputText, completed: false, created_at: 'pending' };
     dispatch(requestAddTodo(todo));
+
+    request
+      .post(`${endpoint}/todos`)
+      .send({ note: inputText })
+      .end( (err, { body }) => {
+        if (err)
+          dispatch(addTodoFail(todo))
+        else
+          dispatch(addTodoSuccess(body, todo._id))
+      });
   }
 }
 
@@ -44,6 +52,14 @@ const requestAddTodo = (todo) => {
     type: types.REQUEST_ADD_TODO,
     todo
   }
+};
+
+const addTodoSuccess = (todo, tempId) => {
+  return { type: types.ADD_TODO_SUCCESS, todo, tempId }
+};
+
+const addTodoFail = (todo) => {
+  return { type: types.ADD_TODO_FAIL, todo }
 };
 
 const requestToggleTodo = (todo) => {
