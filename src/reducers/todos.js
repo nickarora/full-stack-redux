@@ -1,4 +1,4 @@
-import { REQUEST_TODO_TOGGLE, TODO_TOGGLE_SUCCESS, TODO_TOGGLE_FAIL } from '../constants/consts';
+import { REQUEST_TODO_TOGGLE, TODO_TOGGLE_SUCCESS, TODO_TOGGLE_FAIL } from '../constants/action_types';
 import todo from './todo';
 
 export default (state = null, action) => {

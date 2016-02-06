@@ -15,6 +15,8 @@ import '../style/main.css';
 import DevTools from '../src/containers/DevTools';
 
 let initialState = window.__INITIAL_STATE__;
+
+console.log(initialState);
 const store = configureStore(initialState);
 
 const appEl = document.getElementById('app');

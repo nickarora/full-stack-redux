@@ -3,13 +3,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import TodosList from '../components/TodosList';
-import { toggleTodo } from '../actions/actions';
+import TodoInput from '../components/TodoInput';
+import { toggleTodo, addTodo, inputChange } from '../actions/actions';
 
 class App extends Component {
   render() {
     return (
       <div>
         <h3>TODOS</h3>
+        <TodoInput
+          todoText={this.props.todoText}
+          onInputChange = { (e) => this.props.inputChange(e.target.value) }
+          onSubmit = { todo => this.props.addTodo(todo) } />
         <TodosList
           todos={this.props.todos}
           onTodoClick = { todo => this.props.toggleTodo(todo) }
@@ -19,12 +24,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ todos }) => {
-  return { todos };
+const mapStateToProps = ({ todos, todoText }) => {
+  return { todos, todoText };
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleTodo }, dispatch);
+  return bindActionCreators({ toggleTodo, addTodo, inputChange }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

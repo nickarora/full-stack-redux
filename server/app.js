@@ -18,7 +18,7 @@ export const handleRender = (req, res) => {
   todoService.fetchTodos((err, todos) => {
     if (err) throw err;
 
-    const initialState = { todos };
+    const initialState = { todos, todoText: "" };
 
     const history = createHistory();
     const simpleRouter = syncHistory(history);

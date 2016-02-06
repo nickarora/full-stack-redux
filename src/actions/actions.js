@@ -1,7 +1,7 @@
 import request from 'superagent';
 import endpoint from './endpoint';
 
-import { REQUEST_TODO_TOGGLE, TODO_TOGGLE_SUCCESS, TODO_TOGGLE_FAIL } from '../constants/consts'
+import * as types from '../constants/action_types'
 
 export const toggleTodo = (todo) => {
 
@@ -23,16 +23,29 @@ export const toggleTodo = (todo) => {
           dispatch(todoToggleSuccess(body))
       });
   }
+};
+
+export const addTodo = (todo) => {
+  return function(dispatch) {
+  }
+}
+
+export const inputChange = (inputText) => {
+
+  return {
+    type: types.TEXT_INPUT_CHANGE,
+    inputText
+  }
 }
 
 const requestToggleTodo = (todo) => {
-  return { type: REQUEST_TODO_TOGGLE, todo}
-}
+  return { type: types.REQUEST_TODO_TOGGLE, todo}
+};
 
 const todoToggleSuccess = (todo) => {
-  return { type: TODO_TOGGLE_SUCCESS, todo }
-}
+  return { type: types.TODO_TOGGLE_SUCCESS, todo }
+};
 
 const todoToggleFail = (todo) => {
-  return { type: TODO_TOGGLE_FAIL, todo }
-}
+  return { type: types.TODO_TOGGLE_FAIL, todo }
+};

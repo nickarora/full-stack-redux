@@ -1,12 +1,26 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import * as actions from '../../src/actions/actions'
-import * as types from '../../src/constants/consts'
+import * as types from '../../src/constants/action_types'
 import endpoint from '../../src/actions/endpoint'
 import nock from 'nock'
+import {expect} from 'chai'
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
+
+describe('actions', () => {
+
+  it ('creates an action to handle changes to text field input', () => {
+    const inputText = 'Finish docs'
+    const expectedAction = {
+      type: types.TEXT_INPUT_CHANGE,
+      inputText
+    }
+
+    expect(actions.inputChange(inputText)).to.eql(expectedAction);
+  });
+});
 
 describe('async actions', () => {
   afterEach(() => {
@@ -35,6 +49,6 @@ describe('async actions', () => {
     store.dispatch(actions.toggleTodo(todo))
   })
 
-})
+});
 
 
