@@ -36,6 +36,17 @@ describe('todos reducer', () => {
     ])
   });
 
+  it('should handle REQUEST_ADD_TODO', () => {
+    const todo = {_id: 'X123', note: 'note', completed: false, created_at: 'pending'};
+
+    expect(
+      todosReducer(state, {
+        type: types.REQUEST_ADD_TODO,
+        todo
+      })
+    ).to.eql( state.concat(todo) )
+  })
+
 });
 
 
