@@ -36,7 +36,7 @@ describe('todo reducer', () => {
     )
   });
 
-  it ('should not toggle todos not passed with REQUEST_TOGGLE_TODO', () => {
+  it ('should not toggle the wrong todo', () => {
     expect(
       todoReducer(state, {
         type: types.REQUEST_TODO_TOGGLE,

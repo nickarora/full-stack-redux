@@ -22,4 +22,13 @@ describe('todoText reducer', () => {
     ).to.equal("test");
   });
 
+  it('should handle REQUEST_ADD_TODO', () => {
+    expect(
+      todoTextReducer(state, {
+        type: types.REQUEST_ADD_TODO,
+        todo: {}
+      })
+    ).to.equal("");
+  });
+
 });

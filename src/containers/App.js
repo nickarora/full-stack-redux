@@ -14,7 +14,7 @@ class App extends Component {
         <TodoInput
           todoText={this.props.todoText}
           onInputChange = { (e) => this.props.inputChange(e.target.value) }
-          onSubmit = { todo => this.props.addTodo(todo) } />
+          onSubmit = { () => this.props.addTodo(this.props.todoText) } />
         <TodosList
           todos={this.props.todos}
           onTodoClick = { todo => this.props.toggleTodo(todo) }

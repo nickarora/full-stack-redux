@@ -1,4 +1,5 @@
 import request from 'superagent';
+import shortid from 'shortid';
 import endpoint from './endpoint';
 
 import * as types from '../constants/action_types'
@@ -8,9 +9,7 @@ export const toggleTodo = (todo) => {
   return function(dispatch) {
 
     dispatch(requestToggleTodo(todo));
-
     const update = { completed: !todo.completed };
-
     request
       .put(`${endpoint}/todos/${todo._id}`)
       .send(update)
@@ -25,8 +24,10 @@ export const toggleTodo = (todo) => {
   }
 };
 
-export const addTodo = (todo) => {
+export const addTodo = (inputText) => {
   return function(dispatch) {
+    const todo = { _id: shortid.generate(), note: inputText, completed: false, created_at: 'pending' };
+    dispatch(requestAddTodo(todo));
   }
 }
 
@@ -36,7 +37,14 @@ export const inputChange = (inputText) => {
     type: types.TEXT_INPUT_CHANGE,
     inputText
   }
-}
+};
+
+const requestAddTodo = (todo) => {
+  return {
+    type: types.REQUEST_ADD_TODO,
+    todo
+  }
+};
 
 const requestToggleTodo = (todo) => {
   return { type: types.REQUEST_TODO_TOGGLE, todo}
