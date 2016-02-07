@@ -39,6 +39,8 @@ export const deleteTodo = (todo) => {
 
 export const addTodo = (inputText) => {
   return function(dispatch) {
+    if (inputText == "") { return }
+
     const todo = { _id: shortid.generate(), note: inputText, completed: false, created_at: 'pending' };
     dispatch(requestAddTodo(todo));
 
