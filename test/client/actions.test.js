@@ -28,6 +28,42 @@ describe('async actions', () => {
     nock.cleanAll()
   })
 
+  it('creates DEL_TODO_SUCCESS after successfully deleting todo', (done) => {
+
+    const todo = { _id: "ABCD", note: "test todo", completed: false, created_at: "2016" }
+
+    nock(endpoint)
+      .delete(`/todos/${todo._id}`)
+      .reply(200, todo )
+
+    const expectedActions = [
+      { type: types.REQUEST_DEL_TODO, todo },
+      { type: types.DEL_TODO_SUCCESS }
+    ]
+
+    const store = mockStore({ todos: [todo] }, expectedActions, done)
+    store.dispatch(actions.deleteTodo(todo))
+
+  })
+
+  it('creates DEL_TODO_FAIL if request to delete todo is unsuccessful', (done) => {
+
+    const todo = { _id: "ABCD", note: "test todo", completed: false, created_at: "2016" }
+
+    nock(endpoint)
+      .delete(`/todos/${todo._id}`)
+      .reply(500)
+
+    const expectedActions = [
+      { type: types.REQUEST_DEL_TODO, todo },
+      { type: types.DEL_TODO_FAIL, todo }
+    ]
+
+    const store = mockStore({ todos: [todo] }, expectedActions, done)
+    store.dispatch(actions.deleteTodo(todo))
+
+  })
+
   it('creates ADD_TODO_SUCCESS after successfully adding todo', (done) => {
 
     const todo = { _id: "tempID", note: "test todo", completed: false, created_at: "pending" }

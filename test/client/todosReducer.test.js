@@ -47,6 +47,39 @@ describe('todos reducer', () => {
     ).to.eql( state.concat(todo) )
   })
 
+  it('should handle ADD_TODO_FAIL', () => {
+    const todo = {_id: 'X123', note: 'note', completed: false, created_at: 'pending'};
+
+    expect(
+      todosReducer(state.concat(todo), {
+        type: types.ADD_TODO_FAIL,
+        todo
+      })
+    ).to.eql( state )
+  });
+
+  it('should handle REQUEST_DEL_TODO', () => {
+    const todo = state[1]
+
+    expect(
+      todosReducer(state, {
+        type: types.REQUEST_DEL_TODO,
+        todo
+      })
+    ).to.eql( [state[0]] )
+  })
+
+  it('should handle DEL_TODO_FAIL', () => {
+    const todo = state[1]
+
+    expect(
+      todosReducer([ state[0] ], {
+        type: types.DEL_TODO_FAIL,
+        todo
+      })
+    ).to.eql( state )
+  })
+
 });
 
 
