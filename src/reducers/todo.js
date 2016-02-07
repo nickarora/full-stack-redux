@@ -6,6 +6,7 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+
     case ADD_TODO_SUCCESS:
       if (state._id == action.tempId) {
         return {
@@ -14,6 +15,7 @@ export default (state, action) => {
           created_at: action.todo.created_at
         }
       }
+
     case REQUEST_TODO_TOGGLE:
     case TODO_TOGGLE_FAIL:
       if (state._id == action.todo._id) {
@@ -22,8 +24,10 @@ export default (state, action) => {
           completed: !state.completed
         }
       }
+
     case TODO_TOGGLE_SUCCESS:
     default:
       return state;
+
   }
 }

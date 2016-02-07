@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import TodosList from '../components/TodosList';
 import TodoInput from '../components/TodoInput';
-import { toggleTodo, addTodo, inputChange } from '../actions/actions';
+import { toggleTodo, addTodo, deleteTodo, inputChange } from '../actions/actions';
 
 class App extends Component {
   render() {
@@ -17,6 +17,7 @@ class App extends Component {
           onSubmit = { () => this.props.addTodo(this.props.todoText) } />
         <TodosList
           todos={this.props.todos}
+          onTodoDelete = { todo => this.props.deleteTodo(todo) }
           onTodoClick = { todo => this.props.toggleTodo(todo) }
         />
       </div>
@@ -29,7 +30,7 @@ const mapStateToProps = ({ todos, todoText }) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleTodo, addTodo, inputChange }, dispatch);
+  return bindActionCreators({ toggleTodo, addTodo, deleteTodo, inputChange }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -38,7 +38,7 @@ describe('Todos Service', () => {
   it ('should add a todo on POST api/todos', done => {
     request
       .post(`${endpoint}/todos`)
-      .send({ note: 'New Todo'})
+      .send({ note: 'New Todo' })
       .end((err, { body }) => {
         expect(err).to.be.null;
         expect(body.note).to.exist;

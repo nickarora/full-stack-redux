@@ -9,6 +9,7 @@ const TodosList = (props) => {
         <Todo key={todo._id}
               note={todo.note}
               completed={todo.completed}
+              onDelete={() => props.onTodoDelete(todo)}
               onClick={() => props.onTodoClick(todo)} />
       )}
     </ul>
@@ -21,6 +22,7 @@ const todosShape = PropTypes.shape({
 }).isRequired
 
 TodosList.propTypes = {
+  onTodoDelete: PropTypes.func.isRequired,
   onTodoClick: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(todosShape).isRequired
 }
