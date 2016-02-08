@@ -25,7 +25,7 @@ module.exports = {
           exclude: /node_modules/,
           include: __dirname
       }, {
-          test: /\.css?$/,
+          test: /\.scss?$/,
           loaders: ['style', 'css', 'postcss', 'sass'],
           include: __dirname
       }, {
@@ -45,6 +45,6 @@ module.exports = {
   postcss: [autoprefixer],
 
   resolve: {
-      extensions: ['', '.jsx', '.js', '.webpack.js', '.css' ]
+      extensions: ['', '.jsx', '.js', '.webpack.js', '.scss' ]
   }
 }

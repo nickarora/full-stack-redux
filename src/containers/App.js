@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h3>TODOS</h3>
         <TodoInput
           todoText={this.props.todoText}
           onInputChange = { (e) => this.props.inputChange(e.target.value) }

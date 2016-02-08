@@ -9,6 +9,36 @@ html {
 
 .todos-list {
   list-style-type: none;
+  padding: 0;
+}
+
+.todo-input-form {
+  max-width: 400px;
+  min-height:50px;
+  margin: 0px auto;
+
+  .todo-input-form-group {
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+
+    input[type="text"] {
+      width: 350px;
+      height: 20px;
+      border-radius: 5px;
+      font-size: 1em;
+      padding: 10px;
+    }
+
+    button {
+      margin-left: 10px;
+      height: 40px;
+      width: 40px;
+      border-radius: 20px;
+      background: white;
+    }
+  }
 }
 
 .todo {
