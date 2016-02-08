@@ -9,6 +9,8 @@ clone the repo then run the following sequentially:
 
 ```npm start```
 
+then visit localhost:8080
+
 # Testing
 browser tests: ```npm run test-browser```
 
