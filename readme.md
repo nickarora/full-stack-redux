@@ -5,7 +5,7 @@ clone the repo then run the following sequentially:
 
 ```npm install```
 
-```npm build```
+```npm run build```
 
 ```npm start```
 
