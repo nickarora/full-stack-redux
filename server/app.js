@@ -11,6 +11,8 @@ import thunk from 'redux-thunk';
 import reducers from '../src/reducers';
 import routes from './routes';
 
+import css from '../style/main.scss';
+
 import * as todoService from './api/service/todo_service';
 
 export const handleRender = (req, res) => {
@@ -42,7 +44,7 @@ export const handleRender = (req, res) => {
           </Provider>
         );
 
-        res.render('index', { html: html, initialState: JSON.stringify(store.getState())} );
+        res.render('index', { styles: css, html: html, initialState: JSON.stringify(store.getState())} );
       } else {
         res.status(404).render('error');
       }

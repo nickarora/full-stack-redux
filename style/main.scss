@@ -1,0 +1,42 @@
+$font-stack:        Helvetica, sans-serif;
+$background-color:  #ffc600;
+$todo-border-color: #F1F1F1;
+
+html {
+  font-family: $font-stack;
+  background: $background-color;
+}
+
+.todos-list {
+  list-style-type: none;
+}
+
+.todo {
+  max-width:  400px;
+  margin: 0px auto;
+  background: white;
+  border-radius: 0px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+.todo-item {
+  display:flex;
+  align-items:center;
+  border-bottom: 1px solid $todo-border-color;
+
+  input[type="checkbox"] {
+    margin: 0 20px 0 20px;
+  }
+
+  button {
+    margin: 0 20px 0 20px;
+  }
+
+}
+
+.notfound {
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  font-size: 3rem;
+}

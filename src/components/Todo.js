@@ -2,21 +2,22 @@ import React, { PropTypes } from 'react'
 
 const Todo = (props) => {
   return (
-    <li>
-      <input
-        type="checkbox"
-        checked={ props.completed}
-        onClick={props.onClick}
-        />
-      <div
-        className="todo"
-        style={{
-            textDecoration: props.completed ? 'line-through' : 'none',
-            cursor: props.completed ? 'default' : 'pointer'
-          }}>
-        {props.note}
+    <li className="todo">
+      <div className="todo-item">
+        <input
+          type="checkbox"
+          checked={ props.completed}
+          onChange={ props.onClick }
+          />
+        <p
+          style={{
+              textDecoration: props.completed ? 'line-through' : 'none',
+              cursor: props.completed ? 'default' : 'pointer'
+            }}>
+          {props.note}
+        </p>
+        <button onClick={props.onDelete}>x</button>
       </div>
-      <button onClick={props.onDelete}>x</button>
     </li>
   )
 }

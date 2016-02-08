@@ -9,9 +9,6 @@ import routes from '../server/routes';
 import reducers from './reducers';
 import configureStore from './store/configureStore';
 
-import '../style/pure.css';
-import '../style/main.css';
-
 import DevTools from '../src/containers/DevTools';
 
 let initialState = window.__INITIAL_STATE__;
