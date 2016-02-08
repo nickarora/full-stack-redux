@@ -12,8 +12,5 @@ clone the repo then run the following sequentially:
 then visit localhost:8080
 
 # Testing
-browser tests: ```npm run test-browser```
 
-client tests: ```npm run test-client```
-
-server tests: ```npm run test-server```
+Run tests with: ```npm test```

@@ -1,4 +1,4 @@
-import config from '../../config/default.json';
+import config from '../config/default.json';
 
 let dbType = config.mongo.dev;
 

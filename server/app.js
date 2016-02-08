@@ -13,7 +13,12 @@ import routes from './routes';
 
 import css from '../style/main.scss';
 
+import mongoose from 'mongoose';
+import dbConnection from './db_connection';
+
 import * as todoService from './api/service/todo_service';
+
+mongoose.connect(dbConnection);
 
 export const handleRender = (req, res) => {
 

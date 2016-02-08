@@ -1,11 +1,13 @@
 import request from 'superagent';
+import mongoose from 'mongoose';
 import { expect } from 'chai';
 
 import { express } from '../../config/default.json';
 import seedTodos from './test_seed';
-import Todo from '../../server/api/models/todo';
 
-import server from '../../server.babel';
+import server from '../../dist/server.bundle';
+
+const Todo = mongoose.models.Todo;
 
 const endpoint = `http://${express.host}:${express.appPort}/api`;
 
@@ -38,7 +40,7 @@ describe('Todos Service', () => {
   it ('should add a todo on POST api/todos', done => {
     request
       .post(`${endpoint}/todos`)
-      .send({ note: 'New Todo' })
+      .send({ note: 'New Todo'})
       .end((err, { body }) => {
         expect(err).to.be.null;
         expect(body.note).to.exist;
@@ -54,6 +56,7 @@ describe('Todos Service', () => {
       .post(`${endpoint}/todos`)
       .send({ taco: 'taco'})
       .end((err, { body }) => {
+
         expect(err).to.exist;
         done();
       });
