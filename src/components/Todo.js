@@ -9,13 +9,7 @@ const Todo = (props) => {
           checked={ props.completed}
           onChange={ props.onClick }
           />
-        <p
-          style={{
-              textDecoration: props.completed ? 'line-through' : 'none',
-              cursor: props.completed ? 'default' : 'pointer'
-            }}>
-          {props.note}
-        </p>
+        <p>{props.note}</p>
         <button onClick={props.onDelete}>x</button>
       </div>
     </li>

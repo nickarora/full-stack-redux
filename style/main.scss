@@ -1,15 +1,14 @@
-$font-stack:        Helvetica, sans-serif;
-$background-color:  #ffc600;
-$todo-border-color: #F1F1F1;
+$font-stack:              'helvetica neue', sans-serif;
+$background-color:        #ffc600;
+$todo-border-color:       #F1F1F1;
+$todo-checked-color:      #999999;
+$checkbox-divider-color:  #D1E2FF;
 
 html {
   font-family: $font-stack;
+  font-size: 20px;
+  font-weight: 200;
   background: $background-color;
-}
-
-.todos-list {
-  list-style-type: none;
-  padding: 0;
 }
 
 .todo-input-form {
@@ -29,6 +28,7 @@ html {
       border-radius: 5px;
       font-size: 1em;
       padding: 10px;
+      border: none;
     }
 
     button {
@@ -37,7 +37,27 @@ html {
       width: 40px;
       border-radius: 20px;
       background: white;
+      border: none;
     }
+  }
+}
+
+.todos-list {
+  list-style-type: none;
+  padding: 0;
+
+  & li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  & li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  & li:last-child > .todo-item {
+    border-bottom: none;
   }
 }
 
@@ -52,14 +72,34 @@ html {
 .todo-item {
   display:flex;
   align-items:center;
+  min-height: 40px;
   border-bottom: 1px solid $todo-border-color;
 
   input[type="checkbox"] {
     margin: 0 20px 0 20px;
+    cursor: pointer;
+    transform: scale(1.75);
+    flex-shrink: 0;
+  }
+
+  input:checked + p {
+    color: $todo-checked-color;
+    text-decoration: line-through;
+  }
+
+
+  p {
+    flex-grow: 1;
+    margin: 0;
+    padding: 10px;
+    border-left: 1px solid $checkbox-divider-color;
   }
 
   button {
-    margin: 0 20px 0 20px;
+    margin: 0 10px 0 10px;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
   }
 
 }
