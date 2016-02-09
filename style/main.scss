@@ -1,5 +1,7 @@
 $font-stack:              'helvetica neue', sans-serif;
 $background-color:        #ffc600;
+$button-color:            #3b99fc;
+$button-border-color:     #2980B9;
 $todo-border-color:       #F1F1F1;
 $todo-checked-color:      #999999;
 $checkbox-divider-color:  #D1E2FF;
@@ -23,21 +25,43 @@ html {
     align-items: center;
 
     input[type="text"] {
-      width: 350px;
+      width: 330px;
       height: 20px;
       border-radius: 5px;
       font-size: 1em;
-      padding: 10px;
+      padding: 15px;
       border: none;
+
+      &:focus {
+        outline: 0;
+      }
     }
 
     button {
       margin-left: 10px;
-      height: 40px;
-      width: 40px;
-      border-radius: 20px;
-      background: white;
+      height: 48px;
+      width: 48px;
+      cursor: pointer;
+      border-radius: 25px;
+      font-size: 1em;
+      padding: 0;
       border: none;
+      color: white;
+      background: $button-color;
+      border-bottom: 5px solid $button-border-color;
+      transition: all 0.1s;
+
+      &:focus {
+        text-decoration: none;
+        outline: 0;
+      }
+
+      &:active {
+        transform: translate(0px,5px);
+        -webkit-transform: translate(0px,5px);
+        border-bottom: 1px solid;
+      }
+
     }
   }
 }
