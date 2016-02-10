@@ -3,6 +3,7 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
 import expressConfig from './config/default.json';
+import DevServer from './server.webpack';
 
 import { handleRender } from './server/app';
 
@@ -26,6 +27,12 @@ app.delete('/api/todos/:id', api.deleteTodo);
 app.get('*', handleRender);
 
 app.listen(port);
+
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+  new DevServer().startListening();
+} else if (process.env.NODE_ENV === 'production') {
+  console.log('Listening at ' + expressConfig.express.host + ':' + port);
+}
 
 export default app;
 

@@ -11,20 +11,18 @@ const Todo = mongoose.models.Todo;
 
 const endpoint = `http://${express.host}:${express.appPort}/api`;
 
+
+
 describe('Todos Service', () => {
 
-  Todo.collection.drop();
-
   beforeEach(done => {
-    Todo.collection.insert(seedTodos, (err, docs) => {
-      if (err) throw err;
-      done();
-    })
-  });
+    Todo.collection.drop((err) => {
+      Todo.collection.insert(seedTodos, (err, docs) => {
+        if (err) throw err;
+        done();
+      })
+    });
 
-  afterEach(done => {
-    Todo.collection.drop();
-    done();
   });
 
   it ('should return all todos on GET api/todos', done => {

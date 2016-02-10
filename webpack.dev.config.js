@@ -9,12 +9,12 @@ module.exports = {
   entry: [
       'webpack-dev-server/client?http://' + expressConfig.host + ':' + expressConfig.devServerPort,
       'webpack/hot/only-dev-server',
-      './src/client'
+      './src/client.js'
   ],
 
   output: {
-      path: path.join(__dirname, './dist'),
-      filename: './bundle.js',
+      path: __dirname + '/',
+      filename: 'bundle.js',
       publicPath: 'http://' + expressConfig.host + ':' + expressConfig.devServerPort + "/"
   },
 
@@ -46,5 +46,7 @@ module.exports = {
 
   resolve: {
       extensions: ['', '.jsx', '.js', '.webpack.js', '.scss' ]
-  }
+  },
+
+  devtool: 'source-map'
 }
