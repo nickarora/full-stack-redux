@@ -4,7 +4,7 @@ let endpoint = `http://${express.host}:${express.devServerPort}/api`;
 
 if (process.env.NODE_ENV === 'production') {
   const port = process.env.PORT || express.appPort;
-  endpoint = `https://${express.host}:${port}/api`;
+  endpoint = `https://${express.heroku}/api`;
 }
 
 export default endpoint;
