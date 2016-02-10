@@ -28,15 +28,17 @@ Then visit http://localhost:8080/
 
 # Production
 
-Set the NODE_ENV environment variable to 'production'
-Set the MONGOLAB_URI environment variable to your mongodb URI
+* Set the NODE_ENV environment variable to 'production'
+* Set the MONGOLAB_URI environment variable to your mongodb URI
 
 with your environment variables set, run:
  
 ```npm install```
+
 ```npm start```
 
 # Testing
 
 Run tests with: ```npm test```
+
 Run server side tests with ```npm run test-server```
