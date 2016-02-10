@@ -9,8 +9,9 @@ import { handleRender } from './server/app';
 
 import * as api from './server/api/http';
 
+const isDevelopment = (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test');
 const app = Express();
-const port = expressConfig.express.appPort;
+const port = process.env.PORT || expressConfig.express.appPort;
 
 app.set('views', path.join(__dirname, 'server', 'views'));
 app.set('view engine', 'ejs')
@@ -28,7 +29,7 @@ app.get('*', handleRender);
 
 app.listen(port);
 
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (isDevelopment) {
   new DevServer().startListening();
 } else if (process.env.NODE_ENV === 'production') {
   console.log('Listening at ' + expressConfig.express.host + ':' + port);

@@ -3,7 +3,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.dev.config');
 var expressConfig = require('./config/default.json').express;
 
-var appPort = expressConfig.appPort;
+var appPort = process.env.PORT || expressConfig.appPort;
 var devServerPort = expressConfig.devServerPort;
 var host = expressConfig.host;
 

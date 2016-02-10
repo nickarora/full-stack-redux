@@ -3,7 +3,8 @@ import { express } from '../../config/default.json';
 let endpoint = `http://${express.host}:${express.devServerPort}/api`;
 
 if (process.env.NODE_ENV === 'production') {
-  endpoint = `http://${express.host}:${express.appPort}/api`;
+  const port = process.env.PORT || express.appPort;
+  endpoint = `http://${express.host}:${port}/api`;
 }
 
 export default endpoint;
