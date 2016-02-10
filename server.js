@@ -3,13 +3,11 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import serveStatic from 'serve-static';
 import expressConfig from './config/default.json';
-import DevServer from './server.webpack';
 
 import { handleRender } from './server/app';
 
 import * as api from './server/api/http';
 
-const isDevelopment = (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test');
 const app = Express();
 const port = process.env.PORT || expressConfig.express.appPort;
 
@@ -29,8 +27,9 @@ app.get('*', handleRender);
 
 app.listen(port);
 
-if (isDevelopment) {
-  new DevServer().startListening();
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+  const devServer = require('./server.webpack');
+  devServer.startListening();
 } else if (process.env.NODE_ENV === 'production') {
   console.log('Listening at ' + expressConfig.express.host + ':' + port);
 }

@@ -7,7 +7,7 @@ var appPort = process.env.PORT || expressConfig.appPort;
 var devServerPort = expressConfig.devServerPort;
 var host = expressConfig.host;
 
-export default class DevServer {
+class DevServer {
 
   constructor() {
     this.server = new WebpackDevServer(webpack(config), {
@@ -32,3 +32,5 @@ export default class DevServer {
   }
 
 }
+
+module.exports = new DevServer();

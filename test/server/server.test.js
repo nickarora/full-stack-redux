@@ -11,7 +11,7 @@ const Todo = mongoose.models.Todo;
 
 const endpoint = `http://${express.host}:${express.appPort}/api`;
 
-
+console.log("Remember to rebuild after tests complete");
 
 describe('Todos Service', () => {
 
