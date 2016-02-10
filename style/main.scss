@@ -116,6 +116,8 @@ html {
     flex-grow: 1;
     margin: 0;
     padding: 10px;
+    max-width: 277px;
+    word-wrap: break-word;
     border-left: 1px solid $checkbox-divider-color;
   }
 
