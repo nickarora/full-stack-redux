@@ -1,15 +1,26 @@
-A working application using Redux + React + Mongo + Express
+## NMERR: Node + Mongo + Express + React + Redux 
+
+A Universal (Isomorphic) application using the above titled stack.  The application is a simple todo list, but this is 
+a codebase that can be used a starting place for many projects.
+
+[See it in action here](https://full-stack-redux.herokuapp.com/)
+
+Features:
+* Server Side Rendering
+* Dev and Production Webpack Configs
+* Redux Devtools and Hotreloading
+* Client Side Tests (Action Creators/Reducers/etc.) 
+* Server Side Tests
+* ES6 everywhere, including in the testing.
 
 # Usage
 
-clone the repo then run the following sequentially:
+clone the repo and run
 
 ```npm install```
 
-```npm run build```
 
-
-# Starting the Server
+# Starting the Server Locally
 
 ```npm start```
 
@@ -18,16 +29,14 @@ Then visit http://localhost:8080/
 # Production
 
 Set the NODE_ENV environment variable to 'production'
-Set the PORT environment variable to your desired port
+Set the MONGOLAB_URI environment variable to your mongodb URI
 
-with your environment variables set, run
+with your environment variables set, run:
  
-```npm run build```
-
-After the build is complete, run:
-
+```npm install```
 ```npm start```
 
 # Testing
 
 Run tests with: ```npm test```
+Run server side tests with ```npm run test-server```

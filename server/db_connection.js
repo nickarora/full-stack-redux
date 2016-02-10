@@ -13,9 +13,4 @@ switch (process.env.NODE_ENV) {
     dbType = `mongodb://${config.mongo.host}/${config.mongo.dev}`;
 }
 
-console.log('port: ' + process.env.PORT);
-console.log('node env: ' + process.env.NODE_ENV);
-console.log('mongo uri: ' + process.env.MONGOLAB_URI);
-console.log('SELECTED DB: ' + dbType);
-
 export default dbType;
