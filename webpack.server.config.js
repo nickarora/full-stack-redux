@@ -54,11 +54,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.PORT': JSON.stringify(process.env.PORT),
-      'process.env.MONGOLAB_URI': JSON.stringify(process.env.MONGOLAB_URI)
-    }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress:{
