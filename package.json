@@ -6,6 +6,7 @@
     "start": "node ./dist/server.bundle.js",
     "build": "npm run build-client && npm run build-server",
     "test": "npm run test-server && npm run test-client",
+    "postinstall": "npm run build",
     "build-client": "NODE_ENV=production webpack --config webpack.prod.config.js --progress --colors",
     "build-server": "webpack --config webpack.server.config.js --progress --colors",
     "test-browser": "./node_modules/karma/bin/karma start",
