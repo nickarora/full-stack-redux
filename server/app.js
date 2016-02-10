@@ -11,7 +11,8 @@ import thunk from 'redux-thunk';
 import reducers from '../src/reducers';
 import routes from './routes';
 
-import css from '../style/main.scss';
+//import css from '../style/main.scss';
+const css = '';
 
 import mongoose from 'mongoose';
 import dbConnection from './db_connection';

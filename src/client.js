@@ -12,7 +12,7 @@ import configureStore from './store/configureStore';
 import DevTools from '../src/containers/DevTools';
 
 // uncomment if you prfer client-side only css
-// import '../style/main.scss';
+import '../style/main.scss';
 
 let initialState = window.__INITIAL_STATE__;
 
