@@ -4,13 +4,13 @@ let dbType;
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    dbType = config.mongo.prod;
+    dbType = process.env.MONGOLAB_URI || `mongodb://${config.mongo.host}/${config.mongo.prod}`;
     break;
   case 'test':
-    dbType = config.mongo.test;
+    dbType = `mongodb://${config.mongo.host}/${config.mongo.test}`;
     break;
   default:
-    dbType = config.mongo.dev;
+    dbType = `mongodb://${config.mongo.host}/${config.mongo.dev}`;
 }
 
-export default `mongodb://${config.mongo.host}/${dbType}`;
+export default dbType;
