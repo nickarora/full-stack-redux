@@ -11,15 +11,22 @@ clone the repo then run the following sequentially:
 
 # Starting the Server
 
-To start the server in Development mode, set the NODE_ENV variable to development
+```npm start```
 
-```NODE_ENV=development npm start```
+Then visit http://localhost:8080/
 
-To start the server in Production mode, set the NODE_ENV variable to production
+# Production
 
-```NODE_ENV=production npm start``` 
+Set the NODE_ENV environment variable to 'production'
+Set the PORT environment variable to your desired port
 
-then visit localhost:8080
+with your environment variables set, run
+ 
+```npm run build```
+
+After the build is complete, run:
+
+```npm start```
 
 # Testing
 
