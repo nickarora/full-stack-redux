@@ -70,6 +70,6 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
     "redux-mock-store": "0.0.6",
-    "sinon": "^1.17.3",
+    "sinon": "^1.17.3"
   }
 }
