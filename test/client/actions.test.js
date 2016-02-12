@@ -66,16 +66,16 @@ describe('async actions', () => {
 
   it('creates ADD_TODO_SUCCESS after successfully adding todo', (done) => {
 
-    const todo = { _id: "tempID", note: "test todo", completed: false, created_at: "pending" }
+    const testHex = "ABCDABCDABCDABCDABCDABCD";
+    const todo = { _id: testHex, note: "test todo", completed: false, created_at: "pending" }
 
     const resTodo = {
       ...todo,
-      _id: "ABCDE123",
       created_at: "2016"
     }
 
-    const shortIdStub = { generate: sinon.stub().returns("tempID") }
-    actions.__Rewire__('shortid', shortIdStub);
+    const randomHexStub = sinon.stub().returns(testHex);
+    actions.__Rewire__('randomHex', randomHexStub);
 
     nock(endpoint)
       .post(`/todos`)
@@ -83,7 +83,7 @@ describe('async actions', () => {
 
     const expectedActions = [
       { type: types.REQUEST_ADD_TODO, todo },
-      { type: types.ADD_TODO_SUCCESS, todo: resTodo, tempId: todo._id }
+      { type: types.ADD_TODO_SUCCESS, todo: resTodo }
     ]
 
     const store = mockStore({ todos: [] }, expectedActions, done)

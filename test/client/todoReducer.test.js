@@ -75,4 +75,16 @@ describe('todo reducer', () => {
     )
   });
 
+  it ('should handle ADD_TODO_SUCCESS', () => {
+
+    expect(
+      todoReducer(state, {
+        type: types.ADD_TODO_SUCCESS,
+        todo: { ...state, created_at: "2017" }
+      })
+    ).to.eql(
+      { ...state, created_at: "2017" }
+    )
+  });
+
 });

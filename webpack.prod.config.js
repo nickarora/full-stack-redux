@@ -48,6 +48,13 @@ module.exports = {
     })
   ],
 
+  node: {
+    fs: "empty",
+    tls: "empty",
+    module: "empty",
+    net: "empty"
+  },
+
   postcss: [autoprefixer],
 
   resolve: {

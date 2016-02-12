@@ -8,10 +8,9 @@ export default (state, action) => {
   switch (action.type) {
 
     case ADD_TODO_SUCCESS:
-      if (state._id == action.tempId) {
+      if (state._id == action.todo._id) {
         return {
           ...state,
-          _id: action.todo._id,
           created_at: action.todo.created_at
         }
       }

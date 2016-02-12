@@ -1,4 +1,5 @@
 import Todo from '../models/todo';
+import mongoose from 'mongoose';
 
 export const fetchTodos = (callback) => {
   Todo.find(callback);
@@ -6,7 +7,7 @@ export const fetchTodos = (callback) => {
 
 export const addTodo = ( { _id, note }, callback) => {
   new Todo({
-    _id: _id,
+    _id: mongoose.Types.ObjectId(_id),
     note: note,
     completed: false,
     created_at: Date.now()

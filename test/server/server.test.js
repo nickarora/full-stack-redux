@@ -7,6 +7,8 @@ import seedTodos from './test_seed';
 
 import server from '../../dist/server.bundle';
 
+import randomHex from '../../src/util/random_hex';
+
 const Todo = mongoose.models.Todo;
 
 const endpoint = `http://${express.host}:${express.appPort}/api`;
@@ -37,14 +39,14 @@ describe('Todos Service', () => {
 
   it ('should add a todo on POST api/todos', done => {
 
-    const objId = mongoose.Types.ObjectId();
+    const objId = randomHex();
 
     request
       .post(`${endpoint}/todos`)
       .send({ _id: objId, note: 'New Todo'})
       .end((err, { body }) => {
         expect(err).to.be.null;
-        expect(objId.toString()).to.equal(body._id);
+        expect(objId).to.equal(body._id);
         expect(body.note).to.exist;
         Todo.findById(body._id, (err, found) => {
           expect(found).to.exist;

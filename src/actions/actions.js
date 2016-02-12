@@ -1,6 +1,7 @@
 import request from 'superagent';
-import shortid from 'shortid';
 import endpoint from './endpoint';
+
+import randomHex from '../util/random_hex';
 
 import * as types from '../constants/actionTypes'
 
@@ -41,7 +42,8 @@ export const addTodo = (inputText) => {
   return function(dispatch) {
     if (inputText == "") { return }
 
-    const todo = { _id: shortid.generate(), note: inputText, completed: false, created_at: 'pending' };
+    const todo = { _id: randomHex(), note: inputText, completed: false, created_at: 'pending' };
+
     dispatch(requestAddTodo(todo));
 
     request
@@ -51,7 +53,7 @@ export const addTodo = (inputText) => {
         if (err)
           dispatch(addTodoFail(todo))
         else
-          dispatch(addTodoSuccess(body, todo._id))
+          dispatch(addTodoSuccess(body))
       });
   }
 }
@@ -71,8 +73,8 @@ const requestAddTodo = (todo) => {
   }
 };
 
-const addTodoSuccess = (todo, tempId) => {
-  return { type: types.ADD_TODO_SUCCESS, todo, tempId }
+const addTodoSuccess = (todo) => {
+  return { type: types.ADD_TODO_SUCCESS, todo }
 };
 
 const addTodoFail = (todo) => {
