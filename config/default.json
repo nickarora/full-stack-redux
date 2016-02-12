@@ -7,7 +7,7 @@
   },
   "express": {
     "host": "localhost",
-    "heroku": "full-stack-redux.herokuapp.com",
+    "prodHost": "full-stack-redux.herokuapp.com",
     "appPort": 3000,
     "devServerPort": 8080
   }

@@ -30,8 +30,9 @@ Then visit http://localhost:8080/
 
 * Set the NODE_ENV environment variable to 'production'
 * Set the MONGOLAB_URI environment variable to your mongodb URI
+* Update config/default.json express.prodHost to reflect your production host
 
-with your environment variables set, run:
+with your environment variables/config set, run:
  
 ```npm start```
 
