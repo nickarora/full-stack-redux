@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./dist/server.bundle.js",
+    "dev": "NODE_ENV=development node ./dist/server.bundle.js & NODE_ENV=development node ./server.webpack.js",
     "build": "npm run build-client && npm run build-server",
     "test": "npm run test-client",
     "postinstall": "npm run build",
@@ -46,8 +47,7 @@
     "shortid": "^2.2.4",
     "style-loader": "^0.13.0",
     "superagent": "^1.7.2",
-    "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.12.11"
   },
   "devDependencies": {
     "babel-register": "^6.4.3",
@@ -70,6 +70,7 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
     "redux-mock-store": "0.0.6",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "webpack-dev-server": "^1.14.1"
   }
 }

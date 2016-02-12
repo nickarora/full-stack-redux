@@ -27,10 +27,7 @@ app.get('*', handleRender);
 
 app.listen(port);
 
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
-  const devServer = require('./server.webpack');
-  devServer.startListening();
-} else if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   console.log('Listening at ' + expressConfig.express.host + ':' + port);
 }
 

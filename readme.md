@@ -20,9 +20,9 @@ clone the repo and run
 ```npm install```
 
 
-# Starting the Server Locally
+# Starting the Dev Server Locally
 
-```npm start```
+```npm run dev```
 
 Then visit http://localhost:8080/
 
@@ -33,7 +33,6 @@ Set the MONGOLAB_URI environment variable to your mongodb URI
 
 with your environment variables set, run:
  
-```npm install```
 ```npm start```
 
 # Testing
