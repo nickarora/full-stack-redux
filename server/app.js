@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 import { match, RouterContext } from 'react-router';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/lib/createMemoryHistory';
