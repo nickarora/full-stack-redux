@@ -4,8 +4,9 @@ export const fetchTodos = (callback) => {
   Todo.find(callback);
 }
 
-export const addTodo = ( { note }, callback) => {
+export const addTodo = ( { _id, note }, callback) => {
   new Todo({
+    _id: _id,
     note: note,
     completed: false,
     created_at: Date.now()

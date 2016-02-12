@@ -12,9 +12,9 @@ export const getTodos = (req, res) => {
 }
 
 export const addTodo = ({ body }, res) => {
-  if (!body.note) {
+  if (!body.note || !body._id) {
     res.status(400);
-    return res.json({ error: "Can't Add Blank Todo" });
+    return res.json({ error: "Insufficient information to create a todo" });
   }
 
   todoService.addTodo(body, (err, todo) => {

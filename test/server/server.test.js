@@ -36,11 +36,15 @@ describe('Todos Service', () => {
   });
 
   it ('should add a todo on POST api/todos', done => {
+
+    const objId = mongoose.Types.ObjectId();
+
     request
       .post(`${endpoint}/todos`)
-      .send({ note: 'New Todo'})
+      .send({ _id: objId, note: 'New Todo'})
       .end((err, { body }) => {
         expect(err).to.be.null;
+        expect(objId.toString()).to.equal(body._id);
         expect(body.note).to.exist;
         Todo.findById(body._id, (err, found) => {
           expect(found).to.exist;
