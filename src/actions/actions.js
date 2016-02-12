@@ -48,7 +48,7 @@ export const addTodo = (inputText) => {
 
     request
       .post(`${endpoint}/todos`)
-      .send({ note: inputText })
+      .send({ _id: todo._id, note: inputText })
       .end( (err, { body }) => {
         if (err)
           dispatch(addTodoFail(todo))
