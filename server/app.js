@@ -22,11 +22,16 @@ import * as todoService from './api/service/todo_service';
 mongoose.connect(dbConnection);
 
 export const handleRender = (req, res) => {
-  todoService.fetchTodos((err, todos) => {
+  todoService.fetchTodos((err, todosResponse) => {
     if (err) throw err;
 
-    const initialState = { todos, todoText: '' };
+    const todos = todosResponse.map(todo =>
+      ({ _id: todo._id.toString(),
+        note: todo.note,
+        completed: todo.completed,
+        created_at: todo.created_at }));
 
+    const initialState = { todos, todoText: '' };
     const history = createHistory();
     const simpleRouter = syncHistory(history);
     const finalCreateStore = applyMiddleware(thunk, simpleRouter)(createStore);
