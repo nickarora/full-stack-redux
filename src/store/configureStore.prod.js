@@ -16,4 +16,4 @@ const finalCreateStore = applyMiddleware(thunk, simpleRouter, logger)(createStor
 export default (initialState) => {
   const store = finalCreateStore(reducers, initialState);
   return store;
-}
+};
