@@ -6,15 +6,13 @@ import { Router } from 'react-router';
 import { browserHistory } from 'react-router';
 
 import routes from '../server/routes';
-import reducers from './reducers';
 import configureStore from './store/configureStore';
 
 // uncomment if you prefer client-side only css
 // import '../style/main.scss';
 
-let initialState = window.__INITIAL_STATE__;
+const initialState = window.__INITIAL_STATE__;
 
-console.log(initialState);
 const store = configureStore(initialState);
 
 const appEl = document.getElementById('app');
@@ -40,4 +38,3 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     );
   }
 }
-

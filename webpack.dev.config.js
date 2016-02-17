@@ -21,7 +21,7 @@ module.exports = {
   module: {
       loaders: [{
           test: /\.js$/,
-          loaders: ['react-hot', 'babel'],
+          loaders: ['react-hot', 'babel', 'eslint'],
           exclude: /node_modules/,
           include: __dirname
       }, {
@@ -41,6 +41,10 @@ module.exports = {
       }),
       new webpack.NoErrorsPlugin()
   ],
+
+  eslint: {
+    configFile: './.eslintrc'
+  },
 
   postcss: [autoprefixer],
 

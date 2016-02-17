@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -7,29 +7,42 @@ import TodoInput from '../components/TodoInput';
 import { toggleTodo, addTodo, deleteTodo, inputChange } from '../actions/actions';
 
 class App extends Component {
+
+  handleInputChange = e => this.props.inputChange(e.target.value);
+  handleAddTodo = () => this.props.addTodo(this.props.todoText);
+  handleDeleteTodo = todo => this.props.deleteTodo(todo);
+  handleToggleTodo = todo => this.props.toggleTodo(todo);
+
   render() {
     return (
       <div>
         <TodoInput
           todoText={this.props.todoText}
-          onInputChange = { (e) => this.props.inputChange(e.target.value) }
-          onSubmit = { () => this.props.addTodo(this.props.todoText) } />
+          onInputChange={ this.handleInputChange }
+          onSubmit={ this.handleAddTodo }
+        />
         <TodosList
           todos={this.props.todos}
-          onTodoDelete = { todo => this.props.deleteTodo(todo) }
-          onTodoClick = { todo => this.props.toggleTodo(todo) }
+          onTodoDelete={ this.handleDeleteTodo }
+          onTodoClick={ this.handleToggleTodo }
         />
       </div>
     );
   }
+
 }
 
-const mapStateToProps = ({ todos, todoText }) => {
-  return { todos, todoText };
-}
+App.propTypes = {
+  todos: PropTypes.array.isRequired,
+  todoText: PropTypes.string.isRequired,
+  inputChange: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleTodo, addTodo, deleteTodo, inputChange }, dispatch);
-}
+const mapStateToProps = ({ todos, todoText }) => { todos, todoText };
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ toggleTodo, addTodo, deleteTodo, inputChange }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
