@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import TodosList from '../components/TodosList';
 import TodoInput from '../components/TodoInput';
+import todosShape from '../util/todosShape';
 import { toggleTodo, addTodo, deleteTodo, inputChange } from '../actions/actions';
 
 class App extends Component {
@@ -33,7 +34,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  todos: PropTypes.array.isRequired,
+  todos: PropTypes.arrayOf(todosShape).isRequired,
   todoText: PropTypes.string.isRequired,
   inputChange: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,

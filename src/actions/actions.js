@@ -54,7 +54,6 @@ export const addTodo = (inputText) =>
     if (inputText === '') { return; }
 
     const todo = { _id: randomHex(), note: inputText, completed: false, created_at: 'pending' };
-
     dispatch(requestAddTodo(todo));
 
     request

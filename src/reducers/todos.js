@@ -23,7 +23,7 @@ export default (state = null, action) => {
 
     case REQUEST_DEL_TODO:
     case ADD_TODO_FAIL:
-      return state.filter(t => t._id != action.todo._id);
+      return state.filter(t => t._id !== action.todo._id);
 
     case ADD_TODO_SUCCESS:
     case TODO_TOGGLE_FAIL:
@@ -36,4 +36,4 @@ export default (state = null, action) => {
       return state;
 
   }
-}
+};

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import Todo from './Todo';
+import todosShape from '../util/todosShape';
 
 const handleTodoDelete = (props, todo) => () => props.onTodoDelete(todo);
 const handleTodoClick = (props, todo) => () => props.onTodoClick(todo);
@@ -18,10 +19,6 @@ const TodosList = (props) =>
       )}
     </ul>;
 
-const todosShape = PropTypes.shape({
-  note: PropTypes.string.isRequired,
-  completed: PropTypes.bool.isRequired
-}).isRequired;
 
 TodosList.propTypes = {
   onTodoDelete: PropTypes.func.isRequired,
