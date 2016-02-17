@@ -41,8 +41,9 @@ App.propTypes = {
   toggleTodo: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({ todos, todoText }) => { todos, todoText };
+const mapStateToProps = ({ todos, todoText }) => ({ todos, todoText });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ toggleTodo, addTodo, deleteTodo, inputChange }, dispatch);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ toggleTodo, addTodo, deleteTodo, inputChange }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
