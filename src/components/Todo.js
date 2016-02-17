@@ -1,26 +1,23 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
-const Todo = (props) => {
-  return (
+const Todo = (props) =>
     <li className="todo">
       <div className="todo-item">
         <input
           type="checkbox"
-          checked={ props.completed}
-          onChange={ props.onClick }
-          />
+          checked={props.completed}
+          onChange={props.onClick}
+        />
         <p>{props.note}</p>
         <button onClick={props.onDelete}>x</button>
       </div>
-    </li>
-  )
-}
+    </li>;
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   note: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired
-}
+};
 
 export default Todo;
