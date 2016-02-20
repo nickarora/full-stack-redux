@@ -5,7 +5,7 @@ import { match, RouterContext } from 'react-router';
 import { syncHistory } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import createHistory from 'history/lib/createMemoryHistory';
+import createMemoryHistory from 'history/lib/createMemoryHistory';
 import thunk from 'redux-thunk';
 
 import reducers from '../src/reducers';
@@ -32,7 +32,7 @@ export const handleRender = (req, res) => {
         created_at: todo.created_at }));
 
     const initialState = { todos, todoText: '' };
-    const history = createHistory();
+    const history = createMemoryHistory(req.path);
     const simpleRouter = syncHistory(history);
     const finalCreateStore = applyMiddleware(thunk, simpleRouter)(createStore);
 
