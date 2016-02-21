@@ -1,3 +1,5 @@
+const MochaTestRunner = require('./MochaTestRunner');
+
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
@@ -39,7 +41,8 @@ module.exports = {
       new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
+      new MochaTestRunner()
   ],
 
   eslint: {
