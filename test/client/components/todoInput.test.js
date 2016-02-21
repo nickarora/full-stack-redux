@@ -25,7 +25,7 @@ describe('<TodoInput />', () => {
   });
 
   it('should display the text of the current input', () => {
-    expect(wrapper.find('input[type="text"]')).to.have.prop('value').match(/My New Todo/);
+    expect(wrapper.find('input')).to.have.value('My New Todo');
   });
 
   it('should call changeInput action creator on keypress', () => {
