@@ -1,25 +1,24 @@
-import { expect } from 'chai'
-import todoTextReducer from '../../../src/reducers/todoText'
+import { expect } from 'chai';
+import todoTextReducer from '../../../src/reducers/todoText';
 
-import * as types from '../../../src/constants/actionTypes'
+import * as types from '../../../src/constants/actionTypes';
 
 describe('todoText reducer', () => {
-
-  let state = ''
+  const state = '';
 
   it('should return the initial state', () => {
     expect(
       todoTextReducer(state, {})
-    ).to.equal( state )
+    ).to.equal(state);
   });
 
   it('should handle TEXT_INPUT_CHANGE', () => {
     expect(
       todoTextReducer(state, {
         type: types.TEXT_INPUT_CHANGE,
-        inputText: "test"
+        inputText: 'test'
       })
-    ).to.equal("test");
+    ).to.equal('test');
   });
 
   it('should handle REQUEST_ADD_TODO', () => {
@@ -28,7 +27,6 @@ describe('todoText reducer', () => {
         type: types.REQUEST_ADD_TODO,
         todo: {}
       })
-    ).to.equal("");
+    ).to.equal('');
   });
-
 });
