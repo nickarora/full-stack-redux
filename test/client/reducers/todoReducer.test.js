@@ -1,23 +1,22 @@
-import { expect } from 'chai'
-import todoReducer from '../../../src/reducers/todo'
+import { expect } from 'chai';
+import todoReducer from '../../../src/reducers/todo';
 
-import * as types from '../../../src/constants/actionTypes'
+import * as types from '../../../src/constants/actionTypes';
 
 describe('todo reducer', () => {
-
-  let state = {
+  const state = {
     _id: 0,
     note: 'Use Redux',
     completed: false,
-    created_at: "2016"
-  }
+    created_at: '2016'
+  };
 
   it('should return the initial state', () => {
     expect(
       todoReducer(state, {})
     ).to.eql(
       state
-    )
+    );
   });
 
   it('should handle REQUEST_TOGGLE_TODO', () => {
@@ -31,12 +30,12 @@ describe('todo reducer', () => {
         _id: 0,
         note: 'Use Redux',
         completed: true,
-        created_at: "2016"
+        created_at: '2016'
       }
-    )
+    );
   });
 
-  it ('should not toggle the wrong todo', () => {
+  it('should not toggle the wrong todo', () => {
     expect(
       todoReducer(state, {
         type: types.REQUEST_TODO_TOGGLE,
@@ -44,11 +43,11 @@ describe('todo reducer', () => {
       })
     ).to.eql(
       state
-    )
+    );
   });
 
 
-  it ('should handle TODO_TOGGLE_FAIL', () => {
+  it('should handle TODO_TOGGLE_FAIL', () => {
     expect(
       todoReducer(state, {
         type: types.TODO_TOGGLE_FAIL,
@@ -59,12 +58,12 @@ describe('todo reducer', () => {
         _id: 0,
         note: 'Use Redux',
         completed: true,
-        created_at: "2016"
+        created_at: '2016'
       }
-    )
+    );
   });
 
-  it ('should handle TODO_TOGGLE_SUCCESS', () => {
+  it('should handle TODO_TOGGLE_SUCCESS', () => {
     expect(
       todoReducer(state, {
         type: types.TODO_TOGGLE_SUCCESS,
@@ -72,19 +71,17 @@ describe('todo reducer', () => {
       })
     ).to.eql(
       state
-    )
+    );
   });
 
-  it ('should handle ADD_TODO_SUCCESS', () => {
-
+  it('should handle ADD_TODO_SUCCESS', () => {
     expect(
       todoReducer(state, {
         type: types.ADD_TODO_SUCCESS,
-        todo: { ...state, created_at: "2017" }
+        todo: { ...state, created_at: '2017' }
       })
     ).to.eql(
-      { ...state, created_at: "2017" }
-    )
+      { ...state, created_at: '2017' }
+    );
   });
-
 });
