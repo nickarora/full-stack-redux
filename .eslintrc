@@ -6,5 +6,9 @@
     // being JSON at some point, and I don't want to make big changes now.
     "comma-dangle": 0,
     "new-cap": [2, { "capIsNewExceptions": ["Schema", "ObjectId"] }]
-  }
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
 }
