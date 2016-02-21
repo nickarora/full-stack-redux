@@ -104,4 +104,4 @@ describe('async actions', () => {
     const store = mockStore({ todos: [] }, expectedActions, done);
     store.dispatch(actions.toggleTodo(todo));
   });
-t});
+});
