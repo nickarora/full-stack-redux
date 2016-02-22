@@ -1,16 +1,12 @@
 const path = require('path');
-var fs = require('fs');
+const fs = require('fs');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 
-var nodeModules = {};
+const nodeModules = {};
 fs.readdirSync('node_modules')
-  .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1;
-  })
-  .forEach(function(mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
-  });
+  .filter((x) => ['.bin'].indexOf(x) === -1)
+  .forEach((mod) => nodeModules[mod] = `commonjs ${mod}`);
 
 
 module.exports = {
@@ -30,33 +26,33 @@ module.exports = {
   devtool: 'source-map',
 
   output: {
-      path: path.join(__dirname, './dist'),
-      filename: './server.bundle.js',
+    path: path.join(__dirname, './dist'),
+    filename: './server.bundle.js',
   },
 
   module: {
-      loaders: [{
-          test: /\.js$/,
-          loaders: ['babel', 'eslint'],
-          exclude: /node_modules/,
-          include: __dirname
-      }, {
-          test: /\.scss?$/,
-          loaders: ['css', 'postcss', 'sass'],
-          include: __dirname
-      }, {
-          test: /\.json$/,
-          loader: 'json'
-      }, {
-          test: /\.node$/,
-          loader: 'node-loader'
-      }]
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['babel', 'eslint'],
+      exclude: /node_modules/,
+      include: __dirname
+    }, {
+      test: /\.scss?$/,
+      loaders: ['css', 'postcss', 'sass'],
+      include: __dirname
+    }, {
+      test: /\.json$/,
+      loader: 'json'
+    }, {
+      test: /\.node$/,
+      loader: 'node-loader'
+    }]
   },
 
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
-      compress:{
+      compress: {
         warnings: false
       }
     })
@@ -65,7 +61,8 @@ module.exports = {
   postcss: [autoprefixer],
 
   resolve: {
-      extensions: ['', '.jsx', '.js', '.webpack.js', '.scss', '.node' ]
+    extensions: ['', '.jsx', '.js', '.webpack.js', '.scss', '.node']
   },
+
   externals: nodeModules
-}
+};
