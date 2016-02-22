@@ -1,4 +1,4 @@
-const MochaTestRunner = require('./MochaTestRunner');
+const MochaTestRunner = require('./plugins/MochaTestRunner');
 
 const path = require('path');
 const autoprefixer = require('autoprefixer');
