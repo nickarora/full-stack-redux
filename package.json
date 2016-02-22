@@ -15,6 +15,7 @@
     "test-server": "NODE_ENV=test ./node_modules/.bin/mocha ./test/server/*.js --reporter spec --compilers js:babel-register"
   },
   "dependencies": {
+    "autoprefixer": "^6.3.3",
     "babel-core": "^6.4.5",
     "babel-eslint": "^5.0.0",
     "babel-loader": "^6.2.1",
