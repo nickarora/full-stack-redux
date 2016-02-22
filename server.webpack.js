@@ -1,11 +1,11 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.dev.config');
-var expressConfig = require('./config/default.json').express;
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.dev.config');
+const expressConfig = require('./config/default.json').express;
 
-var appPort = process.env.PORT || expressConfig.appPort;
-var devServerPort = expressConfig.devServerPort;
-var host = expressConfig.host;
+const appPort = process.env.PORT || expressConfig.appPort;
+const devServerPort = expressConfig.devServerPort;
+const host = expressConfig.host;
 
 new WebpackDevServer(webpack(config), {
   contentBase: 'dist/',
@@ -15,9 +15,9 @@ new WebpackDevServer(webpack(config), {
   noInfo: true,
   hot: true,
   proxy: {
-    '*': 'http://' + host + ':' + appPort
+    '*': `http://${host}:${appPort}`
   }
-}).listen(devServerPort, host, function(err) {
+}).listen(devServerPort, host, (err) => {
   if (err) console.log(err);
-  console.log('Listening at ' + host + ':' + devServerPort);
+  console.log(`Listening at ${host}:${devServerPort}`);
 });
