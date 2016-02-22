@@ -24,7 +24,6 @@ export const addTodo = ({ body }, res, io) => {
     }
 
     io.emit('add-todo', todo);
-
     return res.json(todo);
   });
 };

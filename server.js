@@ -30,10 +30,6 @@ app.delete('/api/todos/:id', api.deleteTodo);
 
 app.get('*', handleRender);
 
-io.on('connection', () => {
-  console.log('We have one more connected user!');
-});
-
 server.listen(port);
 
 if (process.env.NODE_ENV === 'production') {

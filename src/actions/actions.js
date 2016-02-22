@@ -71,3 +71,5 @@ export const addTodo = (inputText) =>
   };
 
 export const inputChange = (inputText) => ({ type: types.TEXT_INPUT_CHANGE, inputText });
+
+export const pushTodo = (todo) => ({ type: types.PUSH_TODO, todo });

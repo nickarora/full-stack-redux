@@ -7,7 +7,8 @@ import {
   ADD_TODO_SUCCESS,
   REQUEST_DEL_TODO,
   DEL_TODO_SUCCESS,
-  DEL_TODO_FAIL } from '../constants/actionTypes';
+  DEL_TODO_FAIL,
+  PUSH_TODO } from '../constants/actionTypes';
 
 import todo from './todo';
 
@@ -30,6 +31,16 @@ export default (state = null, action) => {
     case TODO_TOGGLE_SUCCESS:
     case REQUEST_TODO_TOGGLE:
       return state.map(t => todo(t, action));
+
+    case PUSH_TODO:
+      if (state.some(t => t._id === action.todo._id)) {
+        return state;
+      }
+
+      return [
+        ...state,
+        action.todo
+      ];
 
     case DEL_TODO_SUCCESS:
     default:
