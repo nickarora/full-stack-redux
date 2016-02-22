@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 app.get('/api/todos', api.getTodos);
 app.post('/api/todos', (req, res) => api.addTodo(req, res, io));
-app.put('/api/todos/:id', api.updateTodo);
+app.put('/api/todos/:id', (req, res) => api.updateTodo(req, res, io));
 app.delete('/api/todos/:id', (req, res) => api.deleteTodo(req, res, io));
 
 app.get('*', handleRender);

@@ -2,7 +2,8 @@ import {
   REQUEST_TODO_TOGGLE,
   TODO_TOGGLE_SUCCESS,
   TODO_TOGGLE_FAIL,
-  ADD_TODO_SUCCESS } from '../constants/actionTypes';
+  ADD_TODO_SUCCESS,
+  PUSH_TOGGLE_TODO } from '../constants/actionTypes';
 
 export default (state, action) => {
   switch (action.type) {
@@ -22,6 +23,15 @@ export default (state, action) => {
         return {
           ...state,
           completed: !state.completed
+        };
+      }
+    /* falls through */
+
+    case PUSH_TOGGLE_TODO:
+      if (state._id === action.todo._id) {
+        return {
+          ...state,
+          completed: action.todo.completed
         };
       }
     /* falls through */

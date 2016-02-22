@@ -28,7 +28,7 @@ export const toggleTodo = (todo) =>
       });
   };
 
-export const requestDelTodo = (todo) => ({ type: types.REQUEST_DEL_TODO, todo });
+const requestDelTodo = (todo) => ({ type: types.REQUEST_DEL_TODO, todo });
 const delTodoSuccess = () => ({ type: types.DEL_TODO_SUCCESS });
 const delTodoFail = (todo) => ({ type: types.DEL_TODO_FAIL, todo });
 
@@ -72,4 +72,6 @@ export const addTodo = (inputText) =>
 
 export const inputChange = (inputText) => ({ type: types.TEXT_INPUT_CHANGE, inputText });
 
-export const pushTodo = (todo) => ({ type: types.PUSH_TODO, todo });
+export const pushAddTodo = (todo) => ({ type: types.PUSH_ADD_TODO, todo });
+export const pushDeleteTodo = (todo) => ({ type: types.PUSH_DELETE_TODO, todo });
+export const pushToggleTodo = (todo) => ({ type: types.PUSH_TOGGLE_TODO, todo });

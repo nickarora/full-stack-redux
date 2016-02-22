@@ -8,7 +8,9 @@ import {
   REQUEST_DEL_TODO,
   DEL_TODO_SUCCESS,
   DEL_TODO_FAIL,
-  PUSH_TODO } from '../constants/actionTypes';
+  PUSH_ADD_TODO,
+  PUSH_DELETE_TODO,
+  PUSH_TOGGLE_TODO } from '../constants/actionTypes';
 
 import todo from './todo';
 
@@ -23,6 +25,7 @@ export default (state = null, action) => {
       ];
 
     case REQUEST_DEL_TODO:
+    case PUSH_DELETE_TODO:
     case ADD_TODO_FAIL:
       return state.filter(t => t._id !== action.todo._id);
 
@@ -30,9 +33,10 @@ export default (state = null, action) => {
     case TODO_TOGGLE_FAIL:
     case TODO_TOGGLE_SUCCESS:
     case REQUEST_TODO_TOGGLE:
+    case PUSH_TOGGLE_TODO:
       return state.map(t => todo(t, action));
 
-    case PUSH_TODO:
+    case PUSH_ADD_TODO:
       if (state.some(t => t._id === action.todo._id)) {
         return state;
       }

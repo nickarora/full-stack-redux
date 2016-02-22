@@ -28,13 +28,14 @@ export const addTodo = ({ body }, res, io) => {
   });
 };
 
-export const updateTodo = ({ params, body }, res) => {
+export const updateTodo = ({ params, body }, res, io) => {
   todoService.updateTodo(params.id, body, (err, conf) => {
     if (err) {
       res.status(400);
       return res.json({ error: err });
     }
 
+    io.emit('toggle-todo', { ...body, _id: params.id });
     return res.json(conf);
   });
 };

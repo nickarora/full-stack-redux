@@ -12,4 +12,6 @@ export const REQUEST_DEL_TODO = 'REQUEST_DEL_TODO';
 export const DEL_TODO_SUCCESS = 'DEL_TODO_SUCCESS';
 export const DEL_TODO_FAIL = 'DEL_TODO_FAIL';
 
-export const PUSH_TODO = 'PUSH_TODO';
+export const PUSH_ADD_TODO = 'PUSH_ADD_TODO';
+export const PUSH_TOGGLE_TODO = 'PUSH_TOGGLE_TODO';
+export const PUSH_DELETE_TODO = 'PUSH_DELETE_TODO';
