@@ -28,7 +28,7 @@ export const toggleTodo = (todo) =>
       });
   };
 
-const requestDelTodo = (todo) => ({ type: types.REQUEST_DEL_TODO, todo });
+export const requestDelTodo = (todo) => ({ type: types.REQUEST_DEL_TODO, todo });
 const delTodoSuccess = () => ({ type: types.DEL_TODO_SUCCESS });
 const delTodoFail = (todo) => ({ type: types.DEL_TODO_FAIL, todo });
 

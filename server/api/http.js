@@ -39,13 +39,14 @@ export const updateTodo = ({ params, body }, res) => {
   });
 };
 
-export const deleteTodo = ({ params }, res) => {
+export const deleteTodo = ({ params }, res, io) => {
   todoService.deleteTodo(params.id, (err, conf) => {
     if (err) {
       res.status(400);
       return res.json({ error: err });
     }
 
+    io.emit('delete-todo', { _id: params.id });
     return res.json(conf);
   });
 };
