@@ -11,7 +11,7 @@ export const getTodos = (req, res) => {
   });
 };
 
-export const addTodo = ({ body }, res) => {
+export const addTodo = ({ body }, res, io) => {
   if (!body.note || !body._id) {
     res.status(400);
     return res.json({ error: 'Insufficient information to create a todo' });
@@ -22,6 +22,8 @@ export const addTodo = ({ body }, res) => {
       res.status(400);
       return res.json({ error: err });
     }
+
+    io.emit('add-todo', todo);
 
     return res.json(todo);
   });

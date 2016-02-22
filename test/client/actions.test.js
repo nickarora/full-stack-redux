@@ -2,13 +2,15 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from '../../src/actions/actions';
 import * as types from '../../src/constants/actionTypes';
-import endpoint from '../../src/actions/endpoint';
+import host from '../../src/util/endpoint';
 import nock from 'nock';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
+
+const endpoint = `${host}/api`;
 
 describe('actions', () => {
   it('creates an action to handle changes to text field input', () => {

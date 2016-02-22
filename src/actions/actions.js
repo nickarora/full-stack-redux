@@ -1,9 +1,11 @@
 import request from 'superagent';
-import endpoint from './endpoint';
+import host from '../util/endpoint';
 
 import randomHex from '../util/random_hex';
 
 import * as types from '../constants/actionTypes';
+
+const endpoint = `${host}/api`;
 
 const requestToggleTodo = (todo) => ({ type: types.REQUEST_TODO_TOGGLE, todo });
 const todoToggleSuccess = (todo) => ({ type: types.TODO_TOGGLE_SUCCESS, todo });
