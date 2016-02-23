@@ -84,4 +84,15 @@ describe('todo reducer', () => {
       { ...state, created_at: '2017' }
     );
   });
+
+  it('should handle PUSH_TOGGLE_TODO', () => {
+    expect(
+      todoReducer(state, {
+        type: types.PUSH_TOGGLE_TODO,
+        todo: { ...state, completed: true }
+      })
+    ).to.eql(
+      { ...state, completed: true }
+    );
+  });
 });

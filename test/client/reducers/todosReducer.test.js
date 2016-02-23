@@ -35,6 +35,25 @@ describe('todos reducer', () => {
     ]);
   });
 
+  it('should handle PUSH_ADD_TODO with a new todo', () => {
+    expect(
+      todosReducer(state, {
+        type: types.PUSH_ADD_TODO,
+        todo: state[1]
+      })
+    ).to.eql(state);
+  });
+
+  it('should handle PUSH_ADD_TODO with a seen todo', () => {
+    const todo = { _id: 'X123', note: 'note', completed: false, created_at: '2016' };
+    expect(
+      todosReducer(state, {
+        type: types.PUSH_ADD_TODO,
+        todo
+      })
+    ).to.eql(state.concat(todo));
+  });
+
   it('should handle REQUEST_ADD_TODO', () => {
     const todo = { _id: 'X123', note: 'note', completed: false, created_at: 'pending' };
 
@@ -58,6 +77,17 @@ describe('todos reducer', () => {
   });
 
   it('should handle REQUEST_DEL_TODO', () => {
+    const todo = state[1];
+
+    expect(
+      todosReducer(state, {
+        type: types.REQUEST_DEL_TODO,
+        todo
+      })
+    ).to.eql([state[0]]);
+  });
+
+  it('should handle PUSH_DELETE_TODO with an existing todo', () => {
     const todo = state[1];
 
     expect(

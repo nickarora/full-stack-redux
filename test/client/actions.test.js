@@ -22,6 +22,36 @@ describe('actions', () => {
 
     expect(actions.inputChange(inputText)).to.eql(expectedAction);
   });
+
+  it('creates an action to handle add-todo push notifications', () => {
+    const todo = { _id: 'ABCD', note: 'test todo', completed: false, created_at: '2016' };
+    const expectedAction = {
+      type: types.PUSH_ADD_TODO,
+      todo
+    };
+
+    expect(actions.pushAddTodo(todo)).to.eql(expectedAction);
+  });
+
+  it('creates an action to handle toggle-todo push notifications', () => {
+    const todo = { _id: 'ABCD', note: 'test todo', completed: true, created_at: '2016' };
+    const expectedAction = {
+      type: types.PUSH_TOGGLE_TODO,
+      todo
+    };
+
+    expect(actions.pushToggleTodo(todo)).to.eql(expectedAction);
+  });
+
+  it('creates an action to handle delete-todo push notifications', () => {
+    const todo = { _id: 'ABCD', note: 'test todo', completed: false, created_at: '2016' };
+    const expectedAction = {
+      type: types.PUSH_DELETE_TODO,
+      todo
+    };
+
+    expect(actions.pushDeleteTodo(todo)).to.eql(expectedAction);
+  });
 });
 
 describe('async actions', () => {
