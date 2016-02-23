@@ -31,6 +31,7 @@ clone the repo and run
 ```npm run dev```
 
 Visit http://localhost:8080/ 
+
 Press `ctrl + h` to launch redux-dev-tools
 
 # Production
