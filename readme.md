@@ -1,16 +1,22 @@
-## NMERR: Node + Mongo + Express + React + Redux 
+## UNMERRY: Universal Node Mongo Express React Redux app, Yippee!
 
 A Universal (Isomorphic) application using the above titled stack.  The application is a simple todo list, but this is 
-a codebase that can be used a starting place for many projects.
+a codebase that can be used a starting place for many projects.  The app includes socket.io integration, so updates
+in one browser appear immediately in all others.
 
 [See it in action here](https://full-stack-redux.herokuapp.com/)
+
+Try opening two browsers, placing them side by side, then adding and deleting todos. 
+
+![Screenshot](/assets/preview.png?raw=true)
 
 Features:
 * Server Side Rendering
 * Dev and Production Webpack Configs
-* Redux Devtools and Hotreloading
-* Client Side Tests (Action Creators/Reducers/etc.) 
+* Redux Devtools and Hotreloading (development environment only)
+* Client Side Tests (Action Creators/Reducers/Components/etc.) 
 * Server Side Tests
+* Socket.io integration
 * ES6 everywhere, including in the testing.
 
 # Usage
@@ -24,7 +30,8 @@ clone the repo and run
 
 ```npm run dev```
 
-Then visit http://localhost:8080/
+Visit http://localhost:8080/ 
+Press `ctrl + h` to launch redux-dev-tools
 
 # Production
 
