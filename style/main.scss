@@ -14,60 +14,71 @@ html {
 }
 
 .todo-input-form {
-  max-width: 400px;
-  min-height:50px;
-  margin: 0px auto;
+  width:  400px;
+  height: 50px;
+  margin: 10px auto 0px auto;
+  display: flex;
+  align-items: center;
 
   .todo-input-form-group {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
     height: 50px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
+    width: 340px;
+  }
 
-    input[type="text"] {
-      flex-grow: 1;
-      height: 18px;
-      border-radius: 5px;
-      font-size: 1em;
-      padding: 15px;
-      border: none;
-      box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+  input[type="text"] {
+    height: 19px;
+    width: 310px;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 15px;
+    border: none;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
 
-      &:focus {
-        outline: 0;
-      }
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  button {
+    height: 48px;
+    width: 48px;
+    margin-left: 10px;
+    border-radius: 24px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    display: table;
+    background: $button-color;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+    transition: all 0.1s;
+
+    .todo-button-text {
+      height: 48px;
+      width: 48px;
+      display: table-cell;
+      vertical-align: top;
+      font-size: 3em;
     }
 
-    button {
-      margin-left: 10px;
-      height: 1px;
-      padding-bottom: 50px;
-      width: 50px;
-      cursor: pointer;
-      border-radius: 25px;
-      font-size: 33px;
-      border: none;
-      color: white;
-      background: $button-color;
-      box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-      transition: all 0.1s;
-
-      &:focus {
-        text-decoration: none;
-        outline: 0;
-      }
-
-      &:active {
-        transform: translate(5px,5px);
-        box-shadow: 1px 1px 0 $button-shadow-color;
-      }
-
+    &:focus {
+      text-decoration: none;
+      outline: 0;
     }
+
+    &:active {
+      transform: translate(5px,5px);
+      box-shadow: 1px 1px 0 $button-shadow-color;
+    }
+
   }
 }
 
 .todos-list {
   list-style-type: none;
+  margin: 10px auto;
   padding: 0;
 
   & li:first-child {
